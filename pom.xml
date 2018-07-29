@@ -87,7 +87,7 @@
 				</dependencies>
 			</plugin>
 
-
+<!-- 
 <plugin>
           <artifactId>maven-source-plugin</artifactId>
           <executions>
@@ -110,16 +110,35 @@
             </execution>
           </executions>
         </plugin>
-        
+     -->   
+     <!--  
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
           <version>2.4</version>
           <configuration>
-            <!-- <useReleaseProfile>false</useReleaseProfile>
-            <releaseProfiles>release</releaseProfiles>-->
+            - <useReleaseProfile>false</useReleaseProfile>
+            <releaseProfiles>release</releaseProfiles>
             <autoVersionSubmodules>true</autoVersionSubmodules>
           </configuration>
-        </plugin>
+        </plugin>-->
+        <plugin>
+    <groupId>com.devexperts.bintray</groupId>
+    <artifactId>bintray-maven-plugin</artifactId>
+    <version>1.2</version>
+    <configuration>
+        <id>bintray-innovanon-inc-Simon-deploy</id>
+        <url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url>
+    </configuration>
+    <executions>
+        <execution>
+            <id>bintray-deploy</id>
+            <goals>
+                <goal>deploy</goal>
+                <goal>publish</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 		</plugins>
 	</build>
 
@@ -137,13 +156,13 @@
 			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url>
 			<uniqueVersion>false</uniqueVersion>
 		</repository>
+		<!-- 
 		<snapshotRepository>
 			<id>bintray-innovanon-inc-Simon</id>
 			<name>InnovAnon-Inc-Simon</name>
-			<!-- <url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/;publish=1</url> -->
 			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url>
 			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
+		</snapshotRepository> -->
 	</distributionManagement>
 </project>
 
