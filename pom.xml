@@ -1,3 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -27,7 +41,6 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj.version}</version>
-			<!--  test -->
 			<!--  <scope>runtime</scope> -->
 		</dependency>
 
@@ -80,4 +93,35 @@
 
 		</plugins>
 	</build>
+	
+	
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-innovanon-inc-Simon</id>
+                    <name>bintray</name>
+                    <url>https://dl.bintray.com/innovanon-inc/Simon</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-innovanon-inc-Simon</id>
+                    <name>bintray-plugins</name>
+                    <url>https://dl.bintray.com/innovanon-inc/Simon</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>bintray</id>
+        </profile>
+    </profiles>	
+	
 </project>
+
+
+
