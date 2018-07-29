@@ -93,7 +93,7 @@
 		<repository>
 			<id>bintray-innovanon-inc-Simon</id>
 			<name>InnovAnon-Inc-Simon</name>
-			<url>https://api.bintray.com/maven/innovanon-inc/Simon/[PACKAGE_NAME]/;publish=1</url>
+			<url>https://api.bintray.com/maven/innovanon-inc/Simon/PACKAGE_NAME/;publish=1</url>
 		</repository>
 	</distributionManagement>
 </project>
