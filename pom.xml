@@ -50,12 +50,13 @@
 					<!-- <Xlint>ignore</Xlint> <complianceLevel>1.7</complianceLevel> -->
 					<verbose>true</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
+					<!-- 
 					<aspectLibraries>
 						<aspectLibrary>
 							<groupId>org.springframework</groupId>
 							<artifactId>spring-aspects</artifactId>
 						</aspectLibrary>
-					</aspectLibraries>
+					</aspectLibraries> -->
 				</configuration>
 				<executions>
 					<execution>
