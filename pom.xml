@@ -19,7 +19,8 @@
 
 	<groupId>com.innovanon.simon</groupId>
 	<artifactId>Simon</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<!-- <version>0.0.1-SNAPSHOT</version>-->
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>Simon</name>
@@ -86,9 +87,38 @@
 				</dependencies>
 			</plugin>
 
+
+<plugin>
+          <artifactId>maven-source-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
 		</plugins>
 	</build>
 
+<scm>
+  <connection>scm:git:https://github.com/InnovAnon-Inc/Simon.git</connection>
+  <developerConnection>scm:git:git@github.com:InnovAnon-Inc/Simon.git</developerConnection>
+  <url>https://github.com/InnovAnon-Inc/Simon</url>
+  <tag>HEAD</tag>
+</scm>
 	<distributionManagement>
 		<repository>
 			<id>bintray-innovanon-inc-Simon</id>
