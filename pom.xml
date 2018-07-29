@@ -41,7 +41,7 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj.version}</version>
-			<!--  <scope>runtime</scope> -->
+			<!-- <scope>runtime</scope> -->
 		</dependency>
 
 		<dependency>
@@ -64,13 +64,8 @@
 					<!-- <Xlint>ignore</Xlint> <complianceLevel>1.7</complianceLevel> -->
 					<verbose>true</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
-					<!-- 
-					<aspectLibraries>
-						<aspectLibrary>
-							<groupId>org.springframework</groupId>
-							<artifactId>spring-aspects</artifactId>
-						</aspectLibrary>
-					</aspectLibraries> -->
+					<!-- <aspectLibraries> <aspectLibrary> <groupId>org.springframework</groupId> 
+						<artifactId>spring-aspects</artifactId> </aspectLibrary> </aspectLibraries> -->
 				</configuration>
 				<executions>
 					<execution>
@@ -93,34 +88,14 @@
 
 		</plugins>
 	</build>
-	
-	
-    <profiles>
-        <profile>
-            <repositories>
-                <repository>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                    <id>bintray-innovanon-inc-Simon</id>
-                    <name>bintray</name>
-                    <url>https://dl.bintray.com/innovanon-inc/Simon</url>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                    <id>bintray-innovanon-inc-Simon</id>
-                    <name>bintray-plugins</name>
-                    <url>https://dl.bintray.com/innovanon-inc/Simon</url>
-                </pluginRepository>
-            </pluginRepositories>
-            <id>bintray</id>
-        </profile>
-    </profiles>	
-	
+
+	<distributionManagement>
+		<repository>
+			<id>bintray-innovanon-inc-Simon</id>
+			<name>InnovAnon-Inc-Simon</name>
+			<url>https://api.bintray.com/maven/innovanon-inc/Simon/[PACKAGE_NAME]/;publish=1</url>
+		</repository>
+	</distributionManagement>
 </project>
 
 
