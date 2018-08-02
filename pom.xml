@@ -16,9 +16,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<targetJDK>1.7</targetJDK>
+		<maven.compiler.source>1.9</maven.compiler.source>
+		<maven.compiler.target>1.9</maven.compiler.target>
+		<targetJDK>1.9</targetJDK>
 		<targetJdk>${targetJDK}</targetJdk>
 
 		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj>
@@ -72,6 +72,24 @@
             <systemPath>${project.basedir}/pom.xml</systemPath>
         </dependency>
 -->
+<!-- 
+<dependency>
+                <groupId>com.sun</groupId>
+                <artifactId>tools</artifactId>
+                <version>10.0.2</version>
+                <scope>system</scope>
+                <systemPath>${toolsjar}</systemPath>
+            </dependency>
+            -->
+            <!-- 
+               <dependency>
+        <groupId>jdk.tools</groupId>
+        <artifactId>jdk.tools</artifactId>
+        <version>jdk1.8.0</version>
+        <scope>system</scope>
+        <systemPath>${toolsjar}</systemPath>
+    </dependency>
+    -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -168,6 +186,7 @@
         </execution>
     </executions>
 </plugin> -->
+ 
 		</plugins>
 	</build>
 
@@ -193,6 +212,57 @@
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository> -->
 	</distributionManagement>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<profiles>
+    <profile>
+        <id>default-profile</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+            <file>
+                <exists>${java.home}/../lib/tools.jar</exists>
+            </file>
+        </activation>
+        <properties>
+            <toolsjar>${java.home}/../lib/tools.jar</toolsjar>
+        </properties>
+    </profile>
+    <profile>
+        <id>mac-profile</id>
+        <activation>
+            <activeByDefault>false</activeByDefault>
+            <file>
+                <exists>${java.home}/../Classes/classes.jar</exists>
+            </file>
+        </activation>
+        <properties>
+            <toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
+        </properties>
+    </profile>
+    <profile>
+        <id>whatever-profile</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+            <file>
+                <exists>${java.home}/lib/tools.jar</exists>
+            </file>
+        </activation>
+        <properties>
+            <toolsjar>${java.home}/lib/tools.jar</toolsjar>
+        </properties>
+    </profile>
+    
+</profiles>
 </project>
 
 
