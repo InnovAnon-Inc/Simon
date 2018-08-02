@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -32,8 +20,14 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<targetJDK>1.7</targetJDK>
 
-		<version-plugin-aspectj>1.4</version-plugin-aspectj>
-		<org.aspectj.version>1.7.1</org.aspectj.version>
+		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj>
+		<org.aspectj.version>1.7.1</org.aspectj.version> -->
+		
+		<version-plugin-aspectj>1.6</version-plugin-aspectj>
+		<aspectjVersion>1.8.1</aspectjVersion>
+    	<org.aspectj.version>${aspectjVersion}</org.aspectj.version>
+    	<mavenVersion>2.2.1</mavenVersion>
+    	<changesPluginVersion>2.9</changesPluginVersion>
 	</properties>
 
 
@@ -45,6 +39,18 @@
 			<version>${org.aspectj.version}</version>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
+		<!-- 
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${org.aspectj.version}</version>
+    </dependency>
+    -->
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>${org.aspectj.version}</version>
+    </dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -63,7 +69,8 @@
 				<configuration>
 					<source>${targetJdk}</source>
 					<target>${targetJdk}</target>
-					<!-- <Xlint>ignore</Xlint> <complianceLevel>1.7</complianceLevel> -->
+					<complianceLevel>${targetJdk}</complianceLevel>
+					<!-- <Xlint>ignore</Xlint> -->
 					<verbose>true</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
 					<!-- <aspectLibraries> <aspectLibrary> <groupId>org.springframework</groupId> 
