@@ -16,7 +16,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 		<targetJDK>${java.version}</targetJDK>
 		<maven.compiler.source>${targetJDK}</maven.compiler.source>
 		<maven.compiler.target>${targetJDK}</maven.compiler.target>
@@ -30,7 +30,7 @@
 		
 		<org.aspectj.version>${version-plugin-aspectj}</org.aspectj.version>
 		<!-- <aspectjVersion>1.9.1</aspectjVersion>-->
-		<aspectjVersion>1.7.1</aspectjVersion>
+		<aspectjVersion>${java.version}.1</aspectjVersion>
     	<org.aspectj.version>${aspectjVersion}</org.aspectj.version>
     	<mavenVersion>3.5.4</mavenVersion>
     	<changesPluginVersion>2.12.1</changesPluginVersion>
