@@ -16,9 +16,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.9</maven.compiler.source>
-		<maven.compiler.target>1.9</maven.compiler.target>
-		<targetJDK>1.9</targetJDK>
+		<maven.compiler.source>1.10</maven.compiler.source>
+		<maven.compiler.target>1.10</maven.compiler.target>
+		<targetJDK>1.10</targetJDK>
 		<targetJdk>${targetJDK}</targetJdk>
 
 		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj>
