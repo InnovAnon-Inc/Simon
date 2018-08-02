@@ -24,11 +24,11 @@
 		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj>
 		<org.aspectj.version>1.7.1</org.aspectj.version> -->
 		
-		<version-plugin-aspectj>1.9</version-plugin-aspectj>
-		<aspectjVersion>1.8.1</aspectjVersion>
+		<version-plugin-aspectj>1.11</version-plugin-aspectj>
+		<aspectjVersion>1.9.1</aspectjVersion>
     	<org.aspectj.version>${aspectjVersion}</org.aspectj.version>
-    	<mavenVersion>2.2.1</mavenVersion>
-    	<changesPluginVersion>2.9</changesPluginVersion>
+    	<mavenVersion>3.5.4</mavenVersion>
+    	<changesPluginVersion>2.12.1</changesPluginVersion>
 	</properties>
 
 
@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
