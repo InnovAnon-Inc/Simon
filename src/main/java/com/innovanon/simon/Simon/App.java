@@ -2,7 +2,8 @@ package com.innovanon.simon.Simon;
 
 /**
  * Hello world!
- *
+ * 
+ * @author seanrdev
  */
 public class App 
 {
