@@ -25,8 +25,8 @@
 		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj>
 		<org.aspectj.version>1.7.1</org.aspectj.version> -->
 		
-		<!-- <version-plugin-aspectj>1.11</version-plugin-aspectj>-->
-		<version-plugin-aspectj>1.5</version-plugin-aspectj>
+		<version-plugin-aspectj>1.11</version-plugin-aspectj>
+		<!-- <version-plugin-aspectj>1.5</version-plugin-aspectj>-->
 		
 		<org.aspectj.version>${version-plugin-aspectj}</org.aspectj.version>
 		<!-- <aspectjVersion>1.9.1</aspectjVersion>-->
