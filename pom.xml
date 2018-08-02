@@ -19,6 +19,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<targetJDK>1.7</targetJDK>
+		<targetJdk>${targetJDK}</targetJdk>
 
 		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj>
 		<org.aspectj.version>1.7.1</org.aspectj.version> -->
@@ -51,6 +52,15 @@
         <artifactId>aspectjweaver</artifactId>
         <version>${org.aspectj.version}</version>
     </dependency>
+    <!-- 
+    <dependency>
+   <groupId>com.sun</groupId>
+   <artifactId>tools</artifactId>
+   <version>${targetJdk}</version>
+   <scope>system</scope>
+   <systemPath>${env.JAVA_HOME}/lib/tools.jar</systemPath>
+ </dependency>
+ -->
 
 		<dependency>
 			<groupId>junit</groupId>
