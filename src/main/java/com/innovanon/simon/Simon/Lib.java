@@ -4,20 +4,46 @@
 package com.innovanon.simon.Simon;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * @author seanrdev
  *
  */
 public class Lib {
-	public Lib() {
-
+	
+	private Random random;
+	
+	private Map<Class<?>, Collection<Method>> retTypeToMethods;
+	private Map<Class<?>, Collection<Object>> typeToInstances;
+	private Map<Class<?>, Collection<Class<?>>> typeToSubtypes;
+	
+	public Lib(Random random) {
+		this.random = random;
 	}
-
-	public static <T> Constructor<T> getConstructor(Class<T> clazz) {
+	
+	public Lib (long seed) {
+		this (new Random(seed));
+	}
+	
+	public Lib () {
+		this (new Random ());
+	}
+	/*
+	public static Method getMethod (Class<?> clazz) {
+		Method[] methods=clazz.getMethods();
+		for (Method method:methods) {
+			Class<?> ret = method.getReturnType();
+		}
+	}
+*/
+	public  <T> Constructor<T> getConstructor(Class<T> clazz) {
 		List<Constructor<T>> consT = getConstructors(clazz);
 		Constructor<T> con = getRandomElement(consT);
 		return con;
@@ -37,15 +63,15 @@ public class Lib {
 		return Collections.unmodifiableList(list);
 	}
 
-	public static <T> T getRandomElement(T[] arr) {
-		// TODO
-		T ret = arr[0];
+	public <T> T getRandomElement(T[] arr) {
+		int i = random.nextInt(arr.length);
+		T ret = arr[i];
 		return ret;
 	}
 
-	public static <T> T getRandomElement(List<T> arr) {
-		// TODO
-		T ret = arr.get(0);
+	public <T> T getRandomElement(List<T> arr) {
+		int i = random.nextInt(arr.size());
+		T ret = arr.get(i);
 		return ret;
 	}
 }
