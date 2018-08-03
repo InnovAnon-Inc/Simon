@@ -12,38 +12,45 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.reflections.ReflectionUtils;
+import org.reflections.Reflections;
+
 /**
  * @author seanrdev
  *
  */
 public class Lib {
-	
+
 	private Random random;
-	
+
 	private Map<Class<?>, Collection<Method>> retTypeToMethods;
 	private Map<Class<?>, Collection<Object>> typeToInstances;
 	private Map<Class<?>, Collection<Class<?>>> typeToSubtypes;
+
+	private Reflections reflections;
 	
+	// TODO 
+	private static boolean isProduction () { return false; }
+
 	public Lib(Random random) {
 		this.random = random;
+		reflections = isProduction() ? Reflections.collect() : new Reflections("your.package.here");
 	}
-	
-	public Lib (long seed) {
-		this (new Random(seed));
+
+	public Lib(long seed) {
+		this(new Random(seed));
 	}
-	
-	public Lib () {
-		this (new Random ());
+
+	public Lib() {
+		this(new Random());
 	}
+
 	/*
-	public static Method getMethod (Class<?> clazz) {
-		Method[] methods=clazz.getMethods();
-		for (Method method:methods) {
-			Class<?> ret = method.getReturnType();
-		}
-	}
-*/
-	public  <T> Constructor<T> getConstructor(Class<T> clazz) {
+	 * public static Method getMethod (Class<?> clazz) { Method[]
+	 * methods=clazz.getMethods(); for (Method method:methods) { Class<?> ret =
+	 * method.getReturnType(); } }
+	 */
+	public <T> Constructor<T> getConstructor(Class<T> clazz) {
 		List<Constructor<T>> consT = getConstructors(clazz);
 		Constructor<T> con = getRandomElement(consT);
 		return con;
