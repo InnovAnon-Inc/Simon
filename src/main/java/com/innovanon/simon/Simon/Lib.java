@@ -46,19 +46,20 @@ public class Lib {
 		List<ClassLoader> classLoadersList = new LinkedList<ClassLoader>();
 		classLoadersList.add(ClasspathHelper.contextClassLoader());
 		classLoadersList.add(ClasspathHelper.staticClassLoader());
-		System.err.println(classLoadersList);
-		cb.setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[2])));
+		//System.err.println(classLoadersList);
+		//cb.setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[2])));
+		
 		//cb.filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix("org.reflections")));
 		//FilterBuilder inputsFilter = new FilterBuilder();
 		//inputsFilter.include(".*");
 		//cb.filterInputsBy(inputsFilter);
 		
-		//cb.setClassLoaders(classLoaders);
+		cb.setClassLoaders(classLoadersList.toArray(new ClassLoader[classLoadersList.size()]));
 		cb.setExpandSuperTypes(true);
 		
 		//reflections = isProduction() ? Reflections.collect() : new Reflections(cb, "com.innovanon.simon");
 		reflections = isProduction() ? Reflections.collect() : new Reflections(cb);
-		if (reflections == null) System.err.println("borked");
+		//if (reflections == null) System.err.println("borked");
 		reflections.expandSuperTypes();
 		
 		/*
