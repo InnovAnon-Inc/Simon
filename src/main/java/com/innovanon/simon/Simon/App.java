@@ -11,5 +11,6 @@ public class App
     {
         System.out.println( "Hello World!" );
         Lib lib = new Lib ();
+        lib.foo();
     }
 }

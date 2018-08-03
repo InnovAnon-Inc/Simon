@@ -87,6 +87,15 @@
             </dependency>
             -->
             <!-- 
+            <dependency>
+            	<groupId>com.sun</groupId>
+            	<artifactId>tools</artifactId>
+            	<version>10.0.2</version>
+            	<scope>system</scope>
+            	<systemPath>${java.home}/lib/tools.jar</systemPath>
+            </dependency>
+            -->
+            <!-- 
                <dependency>
         <groupId>jdk.tools</groupId>
         <artifactId>jdk.tools</artifactId>
@@ -95,6 +104,15 @@
         <systemPath>${toolsjar}</systemPath>
     </dependency>
     -->
+    <!-- 
+    <dependency>
+    <groupId>com.github.olivergondza</groupId>
+    <artifactId>maven-jdk-tools-wrapper</artifactId>
+    <version>0.1</version>
+</dependency>
+-->
+
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -108,6 +126,22 @@
             <!-- use latest version of Reflections -->
             <version>0.9.11</version>
         </dependency>
+        
+        
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <!-- any version of Groovy \>= 1.5.0 should work here -->
+            <version>2.5.1</version>
+            <scope>runtime</scope>
+            <type>pom</type>
+            <!-- <version>2.4.3</version>-->
+        </dependency>
+        <dependency>
+        <groupId>dom4j</groupId>
+        <artifactId>dom4j</artifactId>
+        <version>1.6.1</version>
+    	</dependency>
 	</dependencies>
 
 	<build>
@@ -211,7 +245,7 @@
             <configuration>
                 <scripts>
                     <script><![CDATA[
-                        new org.reflections.Reflections("f.q.n")
+                        new org.reflections.Reflections("com.innovanon.simon")
                             .save("${project.build.outputDirectory}/META-INF/reflections/${project.artifactId}-reflections.xml")
                     ]]></script>
                 </scripts>
@@ -282,7 +316,7 @@
     <profile>
         <id>default-profile</id>
         <activation>
-            <activeByDefault>true</activeByDefault>
+            <activeByDefault>false</activeByDefault>
             <file>
                 <exists>${java.home}/../lib/tools.jar</exists>
             </file>

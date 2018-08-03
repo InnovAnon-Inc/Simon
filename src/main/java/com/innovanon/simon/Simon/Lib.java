@@ -8,12 +8,18 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
+import org.reflections.scanners.ResourcesScanner;
+import org.reflections.scanners.SubTypesScanner;
+import org.reflections.scanners.TypeElementsScanner;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
+import org.reflections.util.FilterBuilder;
 
 /**
  * @author seanrdev
@@ -34,7 +40,36 @@ public class Lib {
 
 	public Lib(Random random) {
 		this.random = random;
-		reflections = isProduction() ? Reflections.collect() : new Reflections("your.package.here");
+		
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setScanners(new SubTypesScanner(false), new ResourcesScanner(), new TypeElementsScanner());
+		List<ClassLoader> classLoadersList = new LinkedList<ClassLoader>();
+		classLoadersList.add(ClasspathHelper.contextClassLoader());
+		classLoadersList.add(ClasspathHelper.staticClassLoader());
+		System.err.println(classLoadersList);
+		cb.setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[2])));
+		//cb.filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix("org.reflections")));
+		//FilterBuilder inputsFilter = new FilterBuilder();
+		//inputsFilter.include(".*");
+		//cb.filterInputsBy(inputsFilter);
+		
+		//cb.setClassLoaders(classLoaders);
+		cb.setExpandSuperTypes(true);
+		
+		//reflections = isProduction() ? Reflections.collect() : new Reflections(cb, "com.innovanon.simon");
+		reflections = isProduction() ? Reflections.collect() : new Reflections(cb);
+		if (reflections == null) System.err.println("borked");
+		reflections.expandSuperTypes();
+		
+		/*
+		Reflections ref = new Reflections(cb);
+		// ...
+		Store s = reflections.getStore();
+		//Set<String> typeSet = s.getStoreMap().get("TypeElementsScanner").keySet();
+		Set<String> typeSet = s.get("TypeElementsScanner").keySet();
+		Set<Class<? extends Object>> classes = Sets.newHashSet(ReflectionUtils.forNames(typeSet, reflections
+				            .getConfiguration().getClassLoaders()));
+				            */
 	}
 
 	public Lib(long seed) {
@@ -43,6 +78,13 @@ public class Lib {
 
 	public Lib() {
 		this(new Random());
+	}
+	
+	public void foo () {
+		//reflections.getMethodsReturn(returnType);
+		//reflections.getSubTypesOf(type);
+		//reflections.
+		System.out.println(reflections.getSubTypesOf(Object.class));
 	}
 
 	/*
