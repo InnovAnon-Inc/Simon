@@ -231,6 +231,7 @@
             <!-- any version of Groovy \>= 1.5.0 should work here -->
             <version>2.5.1</version>
             <scope>runtime</scope>
+            <type>pom</type>
         </dependency>
     </dependencies>
 </plugin>
