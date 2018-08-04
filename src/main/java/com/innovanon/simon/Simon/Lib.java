@@ -22,6 +22,9 @@ import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
 
+import com.innovanon.simon.Simon.primitives.PrimitiveInstantiator;
+import com.innovanon.simon.Simon.primitives.PrimitivesInstantiator;
+
 /**
  * @author seanrdev
  *
@@ -43,6 +46,8 @@ public class Lib {
 
 	public Lib(Random random) {
 		this.random = random;
+		util = new RandomUtil(random);
+		this.primitives = new PrimitivesInstantiator<Object>(random);
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setScanners(new SubTypesScanner(false), new ResourcesScanner(), new TypeElementsScanner());
@@ -87,14 +92,12 @@ public class Lib {
 	}
 
 	/*
-	public void foo() {
-		// reflections.getMethodsReturn(returnType);
-		// reflections.getSubTypesOf(type);
-		// reflections.
-		System.out.println(reflections.getSubTypesOf(Object.class));
-	}
+	 * public void foo() { // reflections.getMethodsReturn(returnType); //
+	 * reflections.getSubTypesOf(type); // reflections.
+	 * System.out.println(reflections.getSubTypesOf(Object.class)); }
 	 */
-	
+
+	@SuppressWarnings("unchecked")
 	public <T> T instantiate(Class<T> clazz) {
 		if (clazz.isArray())
 			return instantiateArray(clazz);
@@ -111,62 +114,21 @@ public class Lib {
 		throw new AssertionError("unexpected flow");
 	}
 
-	@SuppressWarnings("unchecked")
+	private PrimitivesInstantiator<?> primitives;
+	private RandomUtil util;
+
+	
 	public <T> T instantiatePrimitive(Class<T> clazz) {
-		if (clazz.equals(int.class))
-			return (T) Integer.valueOf(instantiateInt());
-		if (clazz.equals(short.class))
-			return (T) Short.valueOf(instantiateShort());
-		if (clazz.equals(long.class))
-			return (T) Long.valueOf(instantiateLong());
-		if (clazz.equals(boolean.class))
-			return (T) Boolean.valueOf(instantiateBoolean());
-		if (clazz.equals(float.class))
-			return (T) Float.valueOf(instantiateFloat());
-		if (clazz.equals(double.class))
-			return (T) Double.valueOf(instantiateDouble());
-		throw new AssertionError ("unexpected flow");
+		return  primitives.instantiate(clazz);
 	}
-
-	public double instantiateDouble() {
-		return random.nextDouble();
+	 /*
+	public Object instantiatePrimitive (Class<?>clazz) {
+		return primitives.instantiate(clazz);
 	}
-
-	public float instantiateFloat() {
-		return random.nextFloat();
-	}
-
-	public boolean instantiateBoolean() {
-		return random.nextBoolean();
-	}
-
-	public long instantiateLong() {
-		return random.nextLong();
-	}
-
-	public short instantiateShort() {
-		int ret = randomRange(Short.MIN_VALUE, Short.MAX_VALUE);
-		assert ret >= Short.MIN_VALUE;
-		assert ret <= Short.MAX_VALUE;
-		return (short) ret;
-	}
-
-	public int randomRange(int min, int max) {
-		int range = range(min, max);
-		return random.nextInt(range) + min;
-	}
-
-	public int range(int min, int max) {
-		return max - min + 1;
-	}
-
-	public int instantiateInt() {
-		return random.nextInt();
-	}
-
+	*/
 	public <T> T instantiateEnum(Class<T> clazz) {
 		T[] arr = clazz.getEnumConstants();
-		return getRandomElement(arr);
+		return util.getRandomElement(arr);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -178,7 +140,8 @@ public class Lib {
 	protected <T> Object instantiateArray0(Class<T> clazz) {
 		Class<?> e = clazz.getComponentType();
 		// TODO
-		int length = random.nextInt();
+		// int length = random.nextInt();
+		int length = random.nextInt(10);
 		Object arr = Array.newInstance(e, length);
 		for (int i = 0; i < length; i++) {
 			Object value = instantiate(e);
@@ -194,7 +157,7 @@ public class Lib {
 	 */
 	public <T> Constructor<T> getConstructor(Class<T> clazz) {
 		List<Constructor<T>> consT = getConstructors(clazz);
-		Constructor<T> con = getRandomElement(consT);
+		Constructor<T> con = util.getRandomElement(consT);
 		return con;
 	}
 
@@ -212,15 +175,4 @@ public class Lib {
 		return Collections.unmodifiableList(list);
 	}
 
-	public <T> T getRandomElement(T[] arr) {
-		int i = random.nextInt(arr.length);
-		T ret = arr[i];
-		return ret;
-	}
-
-	public <T> T getRandomElement(List<T> arr) {
-		int i = random.nextInt(arr.size());
-		T ret = arr.get(i);
-		return ret;
-	}
 }

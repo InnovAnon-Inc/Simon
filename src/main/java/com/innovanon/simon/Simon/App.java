@@ -1,5 +1,7 @@
 package com.innovanon.simon.Simon;
 
+import java.util.Arrays;
+
 /**
  * Hello world!
  * 
@@ -12,6 +14,7 @@ public class App
         System.out.println( "Hello World!" );
         Lib lib = new Lib ();
         //lib.foo();
-        lib.instantiate(int[].class);
+        int[] tmp = lib.instantiate(int[].class);
+        System.out.println(Arrays.toString(tmp));
     }
 }
