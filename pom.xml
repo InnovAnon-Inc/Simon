@@ -34,6 +34,8 @@
 		<mavenVersion>3.5.4</mavenVersion>
 		<changesPluginVersion>2.12.1</changesPluginVersion>
 		
+		<reflections.version>0.9.11</reflections.version>
+		
 		<dropbox.path>file:///opt/files/Dropbox/mvn-repo</dropbox.path>
 	</properties>
 
@@ -80,7 +82,7 @@
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
 			<!-- use latest version of Reflections -->
-			<version>0.9.11</version>
+			<version>${reflections.version}</version>
 		</dependency>
 
 
@@ -173,7 +175,7 @@
 						<groupId>org.reflections</groupId>
 						<artifactId>reflections</artifactId>
 						<!-- use latest version of Reflections -->
-						<version>0.9.11</version>
+						<version>${reflections.version}</version>
 					</dependency>
 					<dependency>
 						<groupId>org.codehaus.groovy</groupId>
@@ -206,9 +208,9 @@
 	</build>
 
 	<scm>
-		<connection>scm:git:https://github.com/InnovAnon-Inc/Simon.git</connection>
-		<developerConnection>scm:git:git@github.com:InnovAnon-Inc/Simon.git</developerConnection>
-		<url>https://github.com/InnovAnon-Inc/Simon</url>
+		<connection>scm:git:https://github.com/InnovAnon-Inc/${project.artifactId}}.git</connection>
+		<developerConnection>scm:git:git@github.com:InnovAnon-Inc/${project.artifactId}.git</developerConnection>
+		<url>https://github.com/InnovAnon-Inc/${project.artifactId}</url>
 		<tag>HEAD</tag>
 	</scm>
 	<repositories>
