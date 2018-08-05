@@ -21,7 +21,12 @@ public class RandomUtil {
 		int range = range(min, max);
 		return random.nextInt(range) + min;
 	}
-
+	/*
+	public int randomRange2(int mid, int range) {
+		int midrange = range / 2;
+		return random.nextInt(range) - midrange;
+	}
+	 */
 	public int range(int min, int max) {
 		return max - min + 1;
 	}

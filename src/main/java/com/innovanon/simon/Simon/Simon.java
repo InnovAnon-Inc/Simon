@@ -29,7 +29,7 @@ import com.innovanon.simon.Simon.primitives.PrimitivesInstantiator;
  * @author seanrdev
  *
  */
-public class Lib {
+public class Simon {
 
 	private Random random;
 
@@ -44,7 +44,7 @@ public class Lib {
 		return false;
 	}
 
-	public Lib(Random random) {
+	public Simon(Random random) {
 		this.random = random;
 		util = new RandomUtil(random);
 		this.primitives = new PrimitivesInstantiator<Object>(random);
@@ -83,11 +83,11 @@ public class Lib {
 		 */
 	}
 
-	public Lib(long seed) {
+	public Simon(long seed) {
 		this(new Random(seed));
 	}
 
-	public Lib() {
+	public Simon() {
 		this(new Random());
 	}
 
