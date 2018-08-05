@@ -13,5 +13,5 @@ The new name is a tribute to a [certain character](https://www.youtube.com/watch
 This is the third implementation; it uses AspectJ to prevent infinite recursion loops.
 -----
 # Links
-- Maven [repo](https://dl.bintray.com/innovanon-inc/Simon) for binary artifacts.
-- [docs](https://innovanon-inc.github.io/Simon)
+- [Maven repo](https://www.dropbox.com/sh/qjfeyi6jgs5lemx/AAASG_4sCsf9dtpWU_MrpUYCa?dl=0) for binary artifacts.
+- [demo](https://innovanon-inc.github.io/Simon)
