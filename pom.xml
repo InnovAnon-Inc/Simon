@@ -34,6 +34,7 @@
 		<mavenVersion>3.5.4</mavenVersion>
 		<changesPluginVersion>2.12.1</changesPluginVersion>
 		
+		<dropbox.path>file:///opt/files/Dropbox/mvn-repo</dropbox.path>
 	</properties>
 
 
@@ -210,14 +211,25 @@
 		<url>https://github.com/InnovAnon-Inc/Simon</url>
 		<tag>HEAD</tag>
 	</scm>
+	<repositories>
+    <repository>
+        <id>localDropbox</id>
+        <url>${dropbox.path}</url>
+    </repository>
+</repositories>
 	<distributionManagement>
+ <repository>
+        <id>localDropbox</id>
+        <url>${dropbox.path}</url>
+    </repository>
 
+<!-- 
 		<repository>
 			<id>bintray-innovanon-inc-Simon</id>
 			<name>innovanon-inc-Simon</name>
 			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/;publish=1</url>
 		</repository>
-
+-->
 		<!-- <repository> <id>bintray-innovanon-inc-Simon</id> <name>InnovAnon-Inc-Simon</name> 
 			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url> <uniqueVersion>false</uniqueVersion> 
 			</repository> -->
