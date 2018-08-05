@@ -7,12 +7,12 @@
 
 	<groupId>com.innovanon.simon</groupId>
 	<artifactId>Simon</artifactId>
-	<!-- <version>0.0.1-SNAPSHOT</version>-->
+	<!-- <version>0.0.1-SNAPSHOT</version> -->
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Simon</name>
-	<url>http://maven.apache.org</url>
+	<url>https://innovanon-inc.github.io/Simon</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,18 +22,18 @@
 		<maven.compiler.target>${targetJDK}</maven.compiler.target>
 		<targetJdk>${targetJDK}</targetJdk>
 
-		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj>
-		<org.aspectj.version>1.7.1</org.aspectj.version> -->
-		
+		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj> <org.aspectj.version>1.7.1</org.aspectj.version> -->
+
 		<version-plugin-aspectj>1.11</version-plugin-aspectj>
-		<!-- <version-plugin-aspectj>1.5</version-plugin-aspectj>-->
-		
+		<!-- <version-plugin-aspectj>1.5</version-plugin-aspectj> -->
+
 		<org.aspectj.version>${version-plugin-aspectj}</org.aspectj.version>
-		<!-- <aspectjVersion>1.9.1</aspectjVersion>-->
+		<!-- <aspectjVersion>1.9.1</aspectjVersion> -->
 		<aspectjVersion>${java.version}.1</aspectjVersion>
-    	<org.aspectj.version>${aspectjVersion}</org.aspectj.version>
-    	<mavenVersion>3.5.4</mavenVersion>
-    	<changesPluginVersion>2.12.1</changesPluginVersion>
+		<org.aspectj.version>${aspectjVersion}</org.aspectj.version>
+		<mavenVersion>3.5.4</mavenVersion>
+		<changesPluginVersion>2.12.1</changesPluginVersion>
+		
 	</properties>
 
 
@@ -45,72 +45,27 @@
 			<version>${org.aspectj.version}</version>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
-		<!-- 
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-aop</artifactId>
-        <version>${org.aspectj.version}</version>
-    </dependency>
-    -->
-    <!-- 
-    <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjweaver</artifactId>
-        <version>${org.aspectj.version}</version>
-    </dependency>
-    -->
-    <!-- 
-    <dependency>
-   <groupId>com.sun</groupId>
-   <artifactId>tools</artifactId>
-   <version>${targetJdk}</version>
-   <scope>system</scope>
-   <systemPath>${env.JAVA_HOME}/lib/tools.jar</systemPath>
- </dependency>
- -->
- <!-- 
- <dependency>
-            <groupId>com.sun</groupId>
-            <artifactId>tools</artifactId>
-            <version>${java.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/pom.xml</systemPath>
-        </dependency>
--->
-<!-- 
-<dependency>
-                <groupId>com.sun</groupId>
-                <artifactId>tools</artifactId>
-                <version>10.0.2</version>
-                <scope>system</scope>
-                <systemPath>${toolsjar}</systemPath>
-            </dependency>
-            -->
-            <!-- 
-            <dependency>
-            	<groupId>com.sun</groupId>
-            	<artifactId>tools</artifactId>
-            	<version>10.0.2</version>
-            	<scope>system</scope>
-            	<systemPath>${java.home}/lib/tools.jar</systemPath>
-            </dependency>
-            -->
-            <!-- 
-               <dependency>
-        <groupId>jdk.tools</groupId>
-        <artifactId>jdk.tools</artifactId>
-        <version>jdk1.8.0</version>
-        <scope>system</scope>
-        <systemPath>${toolsjar}</systemPath>
-    </dependency>
-    -->
-    <!-- 
-    <dependency>
-    <groupId>com.github.olivergondza</groupId>
-    <artifactId>maven-jdk-tools-wrapper</artifactId>
-    <version>0.1</version>
-</dependency>
--->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-aop</artifactId> 
+			<version>${org.aspectj.version}</version> </dependency> -->
+		<!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjweaver</artifactId> 
+			<version>${org.aspectj.version}</version> </dependency> -->
+		<!-- <dependency> <groupId>com.sun</groupId> <artifactId>tools</artifactId> 
+			<version>${targetJdk}</version> <scope>system</scope> <systemPath>${env.JAVA_HOME}/lib/tools.jar</systemPath> 
+			</dependency> -->
+		<!-- <dependency> <groupId>com.sun</groupId> <artifactId>tools</artifactId> 
+			<version>${java.version}</version> <scope>system</scope> <systemPath>${project.basedir}/pom.xml</systemPath> 
+			</dependency> -->
+		<!-- <dependency> <groupId>com.sun</groupId> <artifactId>tools</artifactId> 
+			<version>10.0.2</version> <scope>system</scope> <systemPath>${toolsjar}</systemPath> 
+			</dependency> -->
+		<!-- <dependency> <groupId>com.sun</groupId> <artifactId>tools</artifactId> 
+			<version>10.0.2</version> <scope>system</scope> <systemPath>${java.home}/lib/tools.jar</systemPath> 
+			</dependency> -->
+		<!-- <dependency> <groupId>jdk.tools</groupId> <artifactId>jdk.tools</artifactId> 
+			<version>jdk1.8.0</version> <scope>system</scope> <systemPath>${toolsjar}</systemPath> 
+			</dependency> -->
+		<!-- <dependency> <groupId>com.github.olivergondza</groupId> <artifactId>maven-jdk-tools-wrapper</artifactId> 
+			<version>0.1</version> </dependency> -->
 
 
 		<dependency>
@@ -119,29 +74,29 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <!-- use latest version of Reflections -->
-            <version>0.9.11</version>
-        </dependency>
-        
-        
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <!-- any version of Groovy \>= 1.5.0 should work here -->
-            <version>2.5.1</version>
-            <scope>runtime</scope>
-            <type>pom</type>
-            <!-- <version>2.4.3</version>-->
-        </dependency>
-        <dependency>
-        <groupId>dom4j</groupId>
-        <artifactId>dom4j</artifactId>
-        <version>1.6.1</version>
-    	</dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<!-- use latest version of Reflections -->
+			<version>0.9.11</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<!-- any version of Groovy \>= 1.5.0 should work here -->
+			<version>2.5.1</version>
+			<scope>runtime</scope>
+			<type>pom</type>
+			<!-- <version>2.4.3</version> -->
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -179,178 +134,148 @@
 				</dependencies>
 			</plugin>
 
-<!-- 
-<plugin>
-          <artifactId>maven-source-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-     -->   
-     <!--  
-        <plugin>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.4</version>
-          <configuration>
-            - <useReleaseProfile>false</useReleaseProfile>
-            <releaseProfiles>release</releaseProfiles>
-            <autoVersionSubmodules>true</autoVersionSubmodules>
-          </configuration>
-        </plugin>-->
-        <!-- 
-        <plugin>
-    <groupId>com.devexperts.bintray</groupId>
-    <artifactId>bintray-maven-plugin</artifactId>
-    <version>1.2</version>
-    <configuration>
-        <id>bintray-innovanon-inc-Simon-deploy</id>
-        <url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url>
-    </configuration>
-    <executions>
-        <execution>
-            <id>bintray-deploy</id>
-            <goals>
-                <goal>deploy</goal>
-                <goal>publish</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin> -->
- <plugin>
-    <groupId>org.codehaus.gmavenplus</groupId>
-    <artifactId>gmavenplus-plugin</artifactId>
-    <version>1.5</version>
-    <executions>
-        <execution>
-            <phase>generate-resources</phase>
-            <goals>
-                <goal>execute</goal>
-            </goals>
-            <configuration>
-                <scripts>
-                    <script><![CDATA[
+			<!-- <plugin> <artifactId>maven-source-plugin</artifactId> <executions> 
+				<execution> <id>attach-sources</id> <goals> <goal>jar</goal> </goals> </execution> 
+				</executions> </plugin> <plugin> <artifactId>maven-javadoc-plugin</artifactId> 
+				<executions> <execution> <id>attach-javadocs</id> <goals> <goal>jar</goal> 
+				</goals> </execution> </executions> </plugin> -->
+			<!-- <plugin> <artifactId>maven-release-plugin</artifactId> <version>2.4</version> 
+				<configuration> - <useReleaseProfile>false</useReleaseProfile> <releaseProfiles>release</releaseProfiles> 
+				<autoVersionSubmodules>true</autoVersionSubmodules> </configuration> </plugin> -->
+			<!-- <plugin> <groupId>com.devexperts.bintray</groupId> <artifactId>bintray-maven-plugin</artifactId> 
+				<version>1.2</version> <configuration> <id>bintray-innovanon-inc-Simon-deploy</id> 
+				<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url> </configuration> 
+				<executions> <execution> <id>bintray-deploy</id> <goals> <goal>deploy</goal> 
+				<goal>publish</goal> </goals> </execution> </executions> </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<scripts>
+								<script><![CDATA[
                         new org.reflections.Reflections("com.innovanon.simon")
                             .save("${project.build.outputDirectory}/META-INF/reflections/${project.artifactId}-reflections.xml")
                     ]]></script>
-                </scripts>
-            </configuration>
-        </execution>
-    </executions>
-    <dependencies>
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <!-- use latest version of Reflections -->
-            <version>0.9.11</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <!-- any version of Groovy \>= 1.5.0 should work here -->
-            <version>2.5.1</version>
-            <scope>runtime</scope>
-            <type>pom</type>
-            <!-- <version>2.4.3</version>-->
-        </dependency>
-        <dependency>
-        <groupId>dom4j</groupId>
-        <artifactId>dom4j</artifactId>
-        <version>1.6.1</version>
-    	</dependency>
-    </dependencies>
+							</scripts>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.reflections</groupId>
+						<artifactId>reflections</artifactId>
+						<!-- use latest version of Reflections -->
+						<version>0.9.11</version>
+					</dependency>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-all</artifactId>
+						<!-- any version of Groovy \>= 1.5.0 should work here -->
+						<version>2.5.1</version>
+						<scope>runtime</scope>
+						<type>pom</type>
+						<!-- <version>2.4.3</version> -->
+					</dependency>
+					<dependency>
+						<groupId>dom4j</groupId>
+						<artifactId>dom4j</artifactId>
+						<version>1.6.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			
+			 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.1.2</version>
 </plugin>
 		</plugins>
 	</build>
 
-<scm>
-  <connection>scm:git:https://github.com/InnovAnon-Inc/Simon.git</connection>
-  <developerConnection>scm:git:git@github.com:InnovAnon-Inc/Simon.git</developerConnection>
-  <url>https://github.com/InnovAnon-Inc/Simon</url>
-  <tag>HEAD</tag>
-</scm>
+	<scm>
+		<connection>scm:git:https://github.com/InnovAnon-Inc/Simon.git</connection>
+		<developerConnection>scm:git:git@github.com:InnovAnon-Inc/Simon.git</developerConnection>
+		<url>https://github.com/InnovAnon-Inc/Simon</url>
+		<tag>HEAD</tag>
+	</scm>
 	<distributionManagement>
+
 		<repository>
 			<id>bintray-innovanon-inc-Simon</id>
-			<name>InnovAnon-Inc-Simon</name>
-			<!-- <url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/;publish=1</url> -->
-			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url>
-			<uniqueVersion>false</uniqueVersion>
+			<name>innovanon-inc-Simon</name>
+			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/;publish=1</url>
 		</repository>
-		<!-- 
-		<snapshotRepository>
-			<id>bintray-innovanon-inc-Simon</id>
-			<name>InnovAnon-Inc-Simon</name>
-			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository> -->
+
+		<!-- <repository> <id>bintray-innovanon-inc-Simon</id> <name>InnovAnon-Inc-Simon</name> 
+			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url> <uniqueVersion>false</uniqueVersion> 
+			</repository> -->
+		<!-- <snapshotRepository> <id>bintray-innovanon-inc-Simon</id> <name>InnovAnon-Inc-Simon</name> 
+			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url> <uniqueVersion>false</uniqueVersion> 
+			</snapshotRepository> -->
 	</distributionManagement>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
 	<profiles>
-    <profile>
-        <id>default-profile</id>
-        <activation>
-            <activeByDefault>false</activeByDefault>
-            <file>
-                <exists>${java.home}/../lib/tools.jar</exists>
-            </file>
-        </activation>
-        <properties>
-            <toolsjar>${java.home}/../lib/tools.jar</toolsjar>
-        </properties>
-    </profile>
-    <profile>
-        <id>mac-profile</id>
-        <activation>
-            <activeByDefault>false</activeByDefault>
-            <file>
-                <exists>${java.home}/../Classes/classes.jar</exists>
-            </file>
-        </activation>
-        <properties>
-            <toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
-        </properties>
-    </profile>
-    <profile>
-        <id>whatever-profile</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-            <file>
-                <exists>${java.home}/lib/tools.jar</exists>
-            </file>
-        </activation>
-        <properties>
-            <toolsjar>${java.home}/lib/tools.jar</toolsjar>
-        </properties>
-    </profile>
-    
-</profiles>
+		<profile>
+			<id>default-profile</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<file>
+					<exists>${java.home}/../lib/tools.jar</exists>
+				</file>
+			</activation>
+			<properties>
+				<toolsjar>${java.home}/../lib/tools.jar</toolsjar>
+			</properties>
+		</profile>
+		<profile>
+			<id>mac-profile</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<file>
+					<exists>${java.home}/../Classes/classes.jar</exists>
+				</file>
+			</activation>
+			<properties>
+				<toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
+			</properties>
+		</profile>
+		<profile>
+			<id>whatever-profile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<file>
+					<exists>${java.home}/lib/tools.jar</exists>
+				</file>
+			</activation>
+			<properties>
+				<toolsjar>${java.home}/lib/tools.jar</toolsjar>
+			</properties>
+		</profile>
+
+	</profiles>
 </project>
 
 
