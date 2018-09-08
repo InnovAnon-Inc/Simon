@@ -20,9 +20,8 @@ import org.reflections.scanners.SubTypesScanner;
 import org.reflections.scanners.TypeElementsScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
-import org.reflections.util.FilterBuilder;
 
-import com.innovanon.simon.Simon.primitives.PrimitiveInstantiator;
+import com.innovanon.simon.Simon.arrays.ArraysInstantiator;
 import com.innovanon.simon.Simon.primitives.PrimitivesInstantiator;
 
 /**
@@ -48,6 +47,8 @@ public class Simon {
 		this.random = random;
 		util = new RandomUtil(random);
 		this.primitives = new PrimitivesInstantiator<Object>(random);
+		// TODO
+		this.arrays = new ArraysInstantiator<Object>(this, Object.class);
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setScanners(new SubTypesScanner(false), new ResourcesScanner(), new TypeElementsScanner());
@@ -116,10 +117,11 @@ public class Simon {
 
 	private PrimitivesInstantiator<?> primitives;
 	private RandomUtil util;
-
+	private ArraysInstantiator<?>arrays;
 	
+	@SuppressWarnings("unchecked")
 	public <T> T instantiatePrimitive(Class<T> clazz) {
-		return  primitives.instantiate(clazz);
+		return  (T) primitives.instantiate(clazz);
 	}
 	 /*
 	public Object instantiatePrimitive (Class<?>clazz) {
@@ -133,10 +135,11 @@ public class Simon {
 
 	@SuppressWarnings("unchecked")
 	public <T> T instantiateArray(Class<T> clazz) {
-		T ret = (T) instantiateArray0(clazz);
-		return ret;
+		//T ret = (T) instantiateArray0(clazz);
+		//return ret;
+		return arrays.instantiate(clazz);
 	}
-
+/*
 	protected <T> Object instantiateArray0(Class<T> clazz) {
 		Class<?> e = clazz.getComponentType();
 		// TODO
@@ -149,7 +152,7 @@ public class Simon {
 		}
 		return arr;
 	}
-
+*/
 	/*
 	 * public static Method getMethod (Class<?> clazz) { Method[]
 	 * methods=clazz.getMethods(); for (Method method:methods) { Class<?> ret =
@@ -174,5 +177,19 @@ public class Simon {
 		List<Constructor<T>> list = Arrays.asList(consT);
 		return Collections.unmodifiableList(list);
 	}
+
+	public <T> Instantiator<T> getInstantiator(Class<T> componentType) {
+		// TODO
+		return (Instantiator<T>) this;
+	}
+
+	/**
+	 * @return the random
+	 */
+	public Random getRandom() {
+		return random;
+	}
+	
+	
 
 }
