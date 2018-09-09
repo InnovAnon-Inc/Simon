@@ -22,20 +22,18 @@ package com.innovanon.simon.Simon.suppliers;
 
 import java.util.function.Supplier;
 
+import com.innovanon.simon.Simon.RandomScalarInstantiator;
 import com.innovanon.simon.Simon.randoms.RandomWrapper;
 
 /**
  * @author gouldbergstein
  */
-public class RandomSupplier<T, R extends RandomWrapper<T>> implements Supplier<T> {
-
-	private R random;
-
+public class RandomSupplier<T, R extends RandomWrapper<T>> extends RandomScalarInstantiator<T,R> implements Supplier<T> {
 	/**
 	 * @param random
 	 */
 	public RandomSupplier(R random) {
-		this.random = random;
+		super(random);
 	}
 
 	/* (non-Javadoc)
@@ -43,20 +41,6 @@ public class RandomSupplier<T, R extends RandomWrapper<T>> implements Supplier<T
 	 */
 	@Override
 	public T get() {
-		return random.next();
-	}
-
-	/**
-	 * @return the random
-	 */
-	public R getRandom() {
-		return random;
-	}
-
-	/**
-	 * @param random the random to set
-	 */
-	public void setRandom(R random) {
-		this.random = random;
+		return getRandom().next();
 	}
 }
