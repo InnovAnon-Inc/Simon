@@ -1,5 +1,22 @@
 /**
+ * Om
+ * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
+ * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  * 
+ * InnovAnon, Inc. Proprietary
+ * 
+ * NOTICE:
+ * All reproductions, total or partial, of this work must retain this notice.
+ * 
+ * Possession or use of this technology implies consent to our Terms of Service.
+ * 
+ * Owner and management NOT responsible for injury or death resulting from the use of this equipment.
+ * 
+ * If any clause in this notice is invalid or unenforceable in your jurisdiction, that does NOT necessarily invalidate any other clause in this notice.
+ * 
+ * Om
+ * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
+ * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
 package com.innovanon.simon.Simon3;
 
@@ -7,8 +24,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
+import java.util.SplittableRandom;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * @author gouldbergstein
@@ -16,18 +35,22 @@ import java.util.function.Predicate;
  */
 public class InstantiatorImpl implements Instantiator<Object> {
 
-	private Random random;
+	private SplittableRandom random;
 	private Map<Predicate<Class<?>>,Function<Class<?>, Object>> instantiators;
 
 	public InstantiatorImpl() {
-		random = new Random();
-		IntegerInstantiator arrayLengthInstantiator = new RangeIntegerInstantiator (random, 0, 20);
+		random = new SplittableRandom();
+		int min = 0;
+		int max = 20;
+		IntegerInstantiator arrayLengthInstantiator = new RangeIntegerInstantiator (random::nextInt, min, max);
 		ArrayInstantiator<Object> arrayInstantiator = new ArrayInstantiatorImpl<>(this, arrayLengthInstantiator);
 		IntegerInstantiator integerInstantiator = new IntegerInstantiatorImpl(random);
-		ShortInstantiator shortInstantiator = new ShortInstantiatorImpl (random);
+		ShortInstantiator shortInstantiator = new ShortInstantiatorImpl (random::nextInt);
 		LongInstantiator longInstantiator = new LongInstantiatorImpl (random);
 		DoubleInstantiator doubleInstantiator = new DoubleInstantiatorImpl(random);
-		FloatInstantiator floatInstantiator = new FloatInstantiatorImpl (random);
+		FloatInstantiator floatInstantiator = new FloatInstantiatorImpl (new Supplier<Float>() {
+			@Override public Float get () { return random.nextFloat(); }
+		});
 		BooleanInstantiator booleanInstantiator = new BooleanInstantiatorImpl (random);
 		ByteInstantiator byteInstantiator = new ByteInstantiatorImpl (random);
 		CharacterInstantiator characterInstantiator = new CharacterClassInstantiator (random, Character::isUpperCase);
@@ -71,3 +94,9 @@ public class InstantiatorImpl implements Instantiator<Object> {
 		throw new Error();
 	}
 }
+
+/**
+ * Om
+ * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
+ * Krim Krim Krim Hum Hum Hrim Hrim Svaha
+ */

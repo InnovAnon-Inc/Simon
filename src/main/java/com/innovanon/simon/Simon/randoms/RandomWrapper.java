@@ -18,33 +18,16 @@
  * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
  * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
-package com.innovanon.simon.Simon3;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
+package com.innovanon.simon.Simon.randoms;
 
 /**
  * @author gouldbergstein
- *
  */
-public class RangeIntegerInstantiator extends IntegerInstantiatorImpl {
-
-	/**
+public interface RandomWrapper<T> {
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param random
+	 * @see java.util.Random#nextInt()
 	 */
-	public RangeIntegerInstantiator(Function<Integer, Integer> random, int min, int max) {
-		super(new Supplier<Integer>() {
-			@Override
-			public Integer get() {
-				return random.apply(max - min + 1) + min;
-			}
-		});
-	}
+	T next ();
 }
-
-/**
- * Om
- * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
- * Krim Krim Krim Hum Hum Hrim Hrim Svaha
- */

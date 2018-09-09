@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.innovanon.simon.Simon;
+package com.innovanon.simon.Simon0;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
@@ -21,8 +21,8 @@ import org.reflections.scanners.TypeElementsScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 
-import com.innovanon.simon.Simon.arrays.ArraysInstantiator;
-import com.innovanon.simon.Simon.primitives.PrimitivesInstantiator;
+import com.innovanon.simon.Simon0.arrays.ArraysInstantiator;
+import com.innovanon.simon.Simon0.primitives.PrimitivesInstantiator;
 
 /**
  * @author seanrdev

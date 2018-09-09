@@ -18,33 +18,33 @@
  * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
  * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
-package com.innovanon.simon.Simon3;
+package com.innovanon.simon.Simon.suppliers.primitives.booleans;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+
+import com.innovanon.simon.Simon.randoms.primitives.booleans.RandomBooleanWrapper;
+import com.innovanon.simon.Simon.suppliers.RandomSupplier;
 
 /**
  * @author gouldbergstein
  *
  */
-public class RangeIntegerInstantiator extends IntegerInstantiatorImpl {
+public class RandomBooleanSupplier extends RandomSupplier<Boolean, RandomBooleanWrapper> implements BooleanSupplier {
 
 	/**
-	 * 
 	 * @param random
 	 */
-	public RangeIntegerInstantiator(Function<Integer, Integer> random, int min, int max) {
-		super(new Supplier<Integer>() {
-			@Override
-			public Integer get() {
-				return random.apply(max - min + 1) + min;
-			}
-		});
+	public RandomBooleanSupplier(RandomBooleanWrapper random) {
+		super(random);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.function.BooleanSupplier#getAsBoolean()
+	 */
+	@Override
+	public boolean getAsBoolean() {
+		return getRandom().nextBoolean();
 	}
 }
-
-/**
- * Om
- * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
- * Krim Krim Krim Hum Hum Hrim Hrim Svaha
- */
