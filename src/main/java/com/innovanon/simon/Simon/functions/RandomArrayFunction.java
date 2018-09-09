@@ -6,20 +6,22 @@ package com.innovanon.simon.Simon.functions;
 import java.lang.reflect.Array;
 
 import com.innovanon.simon.Simon.randoms.RandomWrapper;
+import com.innovanon.simon.Simon.suppliers.RandomSupplier;
 import com.innovanon.simon.Simon.suppliers.primitives.ints.RandomIntSupplier;
 
 /**
  * @author gouldbergstein
  *
  */
-public class RandomArrayFunction<T, E, R extends RandomWrapper<E>> extends RandomVectorFunction<T,E, R> {
-	
+public class RandomArrayFunction<T, E, S extends RandomSupplier<E, ?extends RandomWrapper<E>>>
+		extends RandomVectorFunction<T, E, S> {
+
 	/**
 	 * @param random
 	 * @param length
 	 */
-	public RandomArrayFunction(R random, RandomIntSupplier length) {
-		super(random,length);
+	public RandomArrayFunction(S random, RandomIntSupplier length) {
+		super(random, length);
 	}
 
 	/*
@@ -35,13 +37,16 @@ public class RandomArrayFunction<T, E, R extends RandomWrapper<E>> extends Rando
 		Class<?> componentType = t.getComponentType();
 		int length = getLength().getAsInt();
 		Object arr = Array.newInstance(componentType, length);
-		instantiateElementsHelper(arr, componentType, 0,length);
+		instantiateElementsHelper(arr, componentType, 0, length);
 		return (T) arr;
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see com.innovanon.simon.Simon.functions.RandomVectorFunction#instantiateElements(java.lang.Object, java.lang.Class, int, int)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.innovanon.simon.Simon.functions.RandomVectorFunction#instantiateElements(
+	 * java.lang.Object, java.lang.Class, int, int)
 	 */
 	@Override
 	public void instantiateElements(T arr, Class<? extends E> componentType, int start, int range) {
@@ -50,12 +55,12 @@ public class RandomArrayFunction<T, E, R extends RandomWrapper<E>> extends Rando
 		instantiateElementsHelper(arr, componentType, start, range);
 	}
 
-	private void instantiateElementsHelper (Object arr, Class<?> componentType, int start, int range) {
+	private void instantiateElementsHelper(Object arr, Class<?> componentType, int start, int range) {
 		assert arr.getClass().getComponentType().isAssignableFrom(componentType);
 		// TODO parallelize for large ranges
 		for (int i = start; i < start + range; i++) {
-			Object value = getRandom().next();
-			Array.set(arr, i, value );
+			Object value = getRandom().get();
+			Array.set(arr, i, value);
 		}
 	}
 }

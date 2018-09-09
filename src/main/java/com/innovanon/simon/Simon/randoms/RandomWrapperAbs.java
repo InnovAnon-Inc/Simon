@@ -1,22 +1,20 @@
 /**
  * 
  */
-package com.innovanon.simon.Simon;
-
-import com.innovanon.simon.Simon.randoms.RandomWrapper;
+package com.innovanon.simon.Simon.randoms;
 
 /**
  * @author gouldbergstein
  *
  */
-public class RandomInstantiator<T, R> {
+public abstract class RandomWrapperAbs<T, R> implements RandomWrapper<T> {
 
 	private R random;
 
 	/**
 	 * @param random
 	 */
-	public RandomInstantiator(R random) {
+	public RandomWrapperAbs(R random) {
 		this.random = random;
 	}
 
