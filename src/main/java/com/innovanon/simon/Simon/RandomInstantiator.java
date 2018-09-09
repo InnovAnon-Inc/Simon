@@ -3,8 +3,6 @@
  */
 package com.innovanon.simon.Simon;
 
-import com.innovanon.simon.Simon.randoms.RandomWrapper;
-
 /**
  * @author gouldbergstein
  *

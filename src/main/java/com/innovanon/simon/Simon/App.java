@@ -16,6 +16,8 @@ import com.innovanon.simon.Simon.randoms.primitives.ints.RandomRangedIntWrapper;
 import com.innovanon.simon.Simon.suppliers.RandomSupplier;
 import com.innovanon.simon.Simon.suppliers.primitives.booleans.RandomBooleanSupplier;
 import com.innovanon.simon.Simon.suppliers.primitives.ints.RandomIntSupplier;
+import com.innovanon.simon.Simon.vectors.RandomArraySupplier;
+import com.innovanon.simon.Simon.vectors.RandomBooleanArraySupplier;
 
 /**
  * @author gouldbergstein
@@ -23,22 +25,27 @@ import com.innovanon.simon.Simon.suppliers.primitives.ints.RandomIntSupplier;
  */
 public enum App {
 	INSTANCE;
-	
-	private RandomArrayFunction<boolean[], Boolean, RandomBooleanSupplier> random;
-	
-	App () {
+
+	// private RandomArrayFunction<boolean[], Boolean, RandomBooleanSupplier>
+	// random;
+	private RandomBooleanArraySupplier random;
+
+	App() {
 		Random r0 = new Random();
 		RandomIntWrapper r1 = new RandomIntWrapperImpl(r0);
 		RandomIntWrapper r2 = new RandomRangedIntWrapper(r1, 0, 20);
 		RandomIntSupplier l = new RandomIntSupplier(r2);
-		RandomBooleanWrapper r3 = new RandomBooleanWrapperImpl (r0);
+		RandomBooleanWrapper r3 = new RandomBooleanWrapperImpl(r0);
 		RandomBooleanSupplier r4 = new RandomBooleanSupplier(r3);
-		random = new RandomArrayFunction<boolean[],Boolean,RandomBooleanSupplier>(r4, l );
+		// random = new RandomArrayFunction<boolean[],Boolean,RandomBooleanSupplier>(r4,
+		// l );
+		random = new RandomBooleanArraySupplier(r4, l);
 	}
-	
-	public static void main(String...args) {
+
+	public static void main(String... args) {
 		App app = App.INSTANCE;
-		Object out = app.random.apply(boolean[].class);
-		System.out.println(Arrays.toString((boolean[])out));
+		// Object out = app.random.apply(boolean[].class);
+		boolean[] out = app.random.get();
+		System.out.println(Arrays.toString(out));
 	}
 }
