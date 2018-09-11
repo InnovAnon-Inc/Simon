@@ -48,7 +48,9 @@ public class CharacterClassInstantiator extends RangeIntegerInstantiator impleme
 	@Override
 	public char instantiateCharacter() {
 		
-		OfInt i = i.filter(characterClassTest).limit(1).iterator();
+		//OfInt i = i.filter(characterClassTest).limit(1).iterator();
+		// TODO
+		OfInt i = null;
 		int ret = i.nextInt();
 		assert ! i.hasNext();
 		assert Character.MIN_VALUE <= ret && ret <= Character.MAX_VALUE;

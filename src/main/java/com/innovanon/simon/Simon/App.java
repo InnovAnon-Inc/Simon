@@ -3,21 +3,14 @@
  */
 package com.innovanon.simon.Simon;
 
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Random;
 
-import com.innovanon.simon.Simon.functions.RandomArrayFunction;
-import com.innovanon.simon.Simon.randoms.RandomWrapper;
-import com.innovanon.simon.Simon.randoms.primitives.booleans.RandomBooleanWrapper;
-import com.innovanon.simon.Simon.randoms.primitives.booleans.RandomBooleanWrapperImpl;
-import com.innovanon.simon.Simon.randoms.primitives.ints.RandomIntWrapper;
-import com.innovanon.simon.Simon.randoms.primitives.ints.RandomIntWrapperImpl;
-import com.innovanon.simon.Simon.randoms.primitives.ints.RandomRangedIntWrapper;
-import com.innovanon.simon.Simon.suppliers.RandomSupplier;
-import com.innovanon.simon.Simon.suppliers.primitives.booleans.RandomBooleanSupplier;
-import com.innovanon.simon.Simon.suppliers.primitives.ints.RandomIntSupplier;
-import com.innovanon.simon.Simon.vectors.RandomArraySupplier;
-import com.innovanon.simon.Simon.vectors.RandomBooleanArraySupplier;
+import com.innovanon.struct.BagImpl;
+import com.innovanon.struct.conv.NameToClassConverter;
+import com.innovanon.struct.iter.ConvIterator;
+import com.innovanon.struct.iter.Reiterator;
 
 /**
  * @author gouldbergstein
@@ -26,26 +19,23 @@ import com.innovanon.simon.Simon.vectors.RandomBooleanArraySupplier;
 public enum App {
 	INSTANCE;
 
-	// private RandomArrayFunction<boolean[], Boolean, RandomBooleanSupplier>
-	// random;
-	private RandomBooleanArraySupplier random;
-
 	App() {
-		Random r0 = new Random();
-		RandomIntWrapper r1 = new RandomIntWrapperImpl(r0);
-		RandomIntWrapper r2 = new RandomRangedIntWrapper(r1, 0, 20);
-		RandomIntSupplier l = new RandomIntSupplier(r2);
-		RandomBooleanWrapper r3 = new RandomBooleanWrapperImpl(r0);
-		RandomBooleanSupplier r4 = new RandomBooleanSupplier(r3);
-		// random = new RandomArrayFunction<boolean[],Boolean,RandomBooleanSupplier>(r4,
-		// l );
-		random = new RandomBooleanArraySupplier(r4, l);
+
 	}
 
 	public static void main(String... args) {
-		App app = App.INSTANCE;
-		// Object out = app.random.apply(boolean[].class);
-		boolean[] out = app.random.get();
-		System.out.println(Arrays.toString(out));
+		ReflectionsWrapper reflectionsWrapper = ReflectionsWrapper.INSTANCE;
+		Collection<String> classNames = reflectionsWrapper.getTypes();
+		// System.out.println(classNames);
+		// int initialCapacity = classNames.size();
+		Random random = new Random();
+		Iterable<String> bag = new BagImpl<>(classNames, random);
+		//Iterator<String> classNameIterator = new Reiterator<>(bag);
+		//for (int k = 1; k <= 10 && classNameIterator.hasNext(); k++)
+		//	System.out.println(classNameIterator.next());
+		Iterator<String> classNameIterator = bag.iterator();
+		Iterator<Class<?>> classIterator = new ConvIterator<String, Class<?>>(classNameIterator,
+				NameToClassConverter.INSTANCE);
+		
 	}
 }

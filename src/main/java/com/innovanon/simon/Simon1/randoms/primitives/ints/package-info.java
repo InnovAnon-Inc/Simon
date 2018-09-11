@@ -18,42 +18,8 @@
  * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
  * Krim Krim Krim Hum Hum Hrim Hrim Svaha
  */
-package com.innovanon.simon.Simon3;
-
-import java.util.Random;
-
 /**
  * @author gouldbergstein
  *
  */
-public class GaussianInstantiatorImpl extends DoubleInstantiatorImpl {
-
-	private Random random;
-	
-	
-	
-	/**
-	 * @param random
-	 */
-	public GaussianInstantiatorImpl(Random random) {
-		super(random);
-		this.random = random;
-	}
-
-
-
-	/* (non-Javadoc)
-	 * @see com.innovanon.simon.Simon3.DoubleInstantiator#instantiateDouble()
-	 */
-	@Override
-	public double instantiateDouble() {
-		return random.nextGaussian();
-	}
-
-}
-
-/**
- * Om
- * Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
- * Krim Krim Krim Hum Hum Hrim Hrim Svaha
- */
+package com.innovanon.simon.Simon1.randoms.primitives.ints;

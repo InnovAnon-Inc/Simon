@@ -5,4 +5,4 @@
  * @author gouldbergstein
  *
  */
-package com.innovanon.simon.Simon;
+package com.innovanon.struct.conv;

@@ -3,7 +3,6 @@
  */
 package com.innovanon.simon.Simon0;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -20,9 +19,6 @@ import org.reflections.scanners.SubTypesScanner;
 import org.reflections.scanners.TypeElementsScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
-
-import com.innovanon.simon.Simon0.arrays.ArraysInstantiator;
-import com.innovanon.simon.Simon0.primitives.PrimitivesInstantiator;
 
 /**
  * @author seanrdev
@@ -45,10 +41,10 @@ public class Simon {
 
 	public Simon(Random random) {
 		this.random = random;
-		util = new RandomUtil(random);
-		this.primitives = new PrimitivesInstantiator<Object>(random);
+//		util = new RandomUtil(random);
+//		this.primitives = new PrimitivesInstantiator<Object>(random);
 		// TODO
-		this.arrays = new ArraysInstantiator<Object>(this, Object.class);
+//		this.arrays = new ArraysInstantiator<Object>(this, Object.class);
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setScanners(new SubTypesScanner(false), new ResourcesScanner(), new TypeElementsScanner());
@@ -98,47 +94,47 @@ public class Simon {
 	 * System.out.println(reflections.getSubTypesOf(Object.class)); }
 	 */
 
-	@SuppressWarnings("unchecked")
-	public <T> T instantiate(Class<T> clazz) {
-		if (clazz.isArray())
-			return instantiateArray(clazz);
-		if (clazz.isPrimitive())
-			return instantiatePrimitive(clazz);
-		if (clazz.isEnum())
-			return instantiateEnum(clazz);
-		// if (clazz.isInterface())
-		// if (clazz.isAnnotation())
-		// if (clazz.isAnonymousClass())
-		// if (clazz.isLocalClass())
-		// if (clazz.isMemberClass())
-		// if (clazz.isSynthetic())
-		throw new AssertionError("unexpected flow");
-	}
+	//@SuppressWarnings("unchecked")
+	//public <T> T instantiate(Class<T> clazz) {
+	//	if (clazz.isArray())
+	//		return instantiateArray(clazz);
+	//	if (clazz.isPrimitive())
+	//		return instantiatePrimitive(clazz);
+	//	if (clazz.isEnum())
+	//		return instantiateEnum(clazz);
+	//	// if (clazz.isInterface())
+	//	// if (clazz.isAnnotation())
+	//	// if (clazz.isAnonymousClass())
+	//	// if (clazz.isLocalClass())
+	//	// if (clazz.isMemberClass())
+	//	// if (clazz.isSynthetic())
+	//	throw new AssertionError("unexpected flow");
+	//}
 
-	private PrimitivesInstantiator<?> primitives;
-	private RandomUtil util;
-	private ArraysInstantiator<?>arrays;
+//	private PrimitivesInstantiator<?> primitives;
+//	private RandomUtil util;
+//	private ArraysInstantiator<?>arrays;
 	
-	@SuppressWarnings("unchecked")
-	public <T> T instantiatePrimitive(Class<T> clazz) {
-		return  (T) primitives.instantiate(clazz);
-	}
+	//@SuppressWarnings("unchecked")
+	//public <T> T instantiatePrimitive(Class<T> clazz) {
+	//	return  (T) primitives.instantiate(clazz);
+	//}
 	 /*
 	public Object instantiatePrimitive (Class<?>clazz) {
 		return primitives.instantiate(clazz);
 	}
 	*/
-	public <T> T instantiateEnum(Class<T> clazz) {
-		T[] arr = clazz.getEnumConstants();
-		return util.getRandomElement(arr);
-	}
+//	public <T> T instantiateEnum(Class<T> clazz) {
+//		T[] arr = clazz.getEnumConstants();
+//		return util.getRandomElement(arr);
+//	}
 
-	@SuppressWarnings("unchecked")
-	public <T> T instantiateArray(Class<T> clazz) {
-		//T ret = (T) instantiateArray0(clazz);
-		//return ret;
-		return arrays.instantiate(clazz);
-	}
+	//@SuppressWarnings("unchecked")
+	//public <T> T instantiateArray(Class<T> clazz) {
+	//	//T ret = (T) instantiateArray0(clazz);
+	//	//return ret;
+	//	return arrays.instantiate(clazz);
+//	}
 /*
 	protected <T> Object instantiateArray0(Class<T> clazz) {
 		Class<?> e = clazz.getComponentType();
@@ -158,11 +154,11 @@ public class Simon {
 	 * methods=clazz.getMethods(); for (Method method:methods) { Class<?> ret =
 	 * method.getReturnType(); } }
 	 */
-	public <T> Constructor<T> getConstructor(Class<T> clazz) {
-		List<Constructor<T>> consT = getConstructors(clazz);
-		Constructor<T> con = util.getRandomElement(consT);
-		return con;
-	}
+//	public <T> Constructor<T> getConstructor(Class<T> clazz) {
+//		List<Constructor<T>> consT = getConstructors(clazz);
+//		Constructor<T> con = util.getRandomElement(consT);
+//		return con;
+//	}
 
 	@SuppressWarnings("unchecked")
 	protected static <T> Constructor<T>[] getConstructors0(Class<T> clazz) {
@@ -178,10 +174,10 @@ public class Simon {
 		return Collections.unmodifiableList(list);
 	}
 
-	public <T> Instantiator<T> getInstantiator(Class<T> componentType) {
+	//public <T> Instantiator<T> getInstantiator(Class<T> componentType) {
 		// TODO
-		return (Instantiator<T>) this;
-	}
+		//return (Instantiator<T>) this;
+	//}
 
 	/**
 	 * @return the random

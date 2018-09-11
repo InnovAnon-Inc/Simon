@@ -47,18 +47,18 @@ public class InstantiatorImpl implements Instantiator<Object> {
 		IntegerInstantiator integerInstantiator = new IntegerInstantiatorImpl(random);
 		ShortInstantiator shortInstantiator = new ShortInstantiatorImpl (random::nextInt);
 		LongInstantiator longInstantiator = new LongInstantiatorImpl (random);
-		DoubleInstantiator doubleInstantiator = new DoubleInstantiatorImpl(random);
-		FloatInstantiator floatInstantiator = new FloatInstantiatorImpl (new Supplier<Float>() {
-			@Override public Float get () { return random.nextFloat(); }
-		});
+		//DoubleInstantiator doubleInstantiator = new DoubleInstantiatorImpl(random);
+		//FloatInstantiator floatInstantiator = new FloatInstantiatorImpl (new Supplier<Float>() {
+		//	@Override public Float get () { return random.nextFloat(); }
+		//});
 		BooleanInstantiator booleanInstantiator = new BooleanInstantiatorImpl (random);
 		ByteInstantiator byteInstantiator = new ByteInstantiatorImpl (random);
-		CharacterInstantiator characterInstantiator = new CharacterClassInstantiator (random, Character::isUpperCase);
-		PrimitiveInstantiator primitiveInstantiator = new PrimitiveInstantiatorImpl(integerInstantiator,shortInstantiator,longInstantiator,
-				doubleInstantiator,floatInstantiator,booleanInstantiator,characterInstantiator,byteInstantiator);
+		//CharacterInstantiator characterInstantiator = new CharacterClassInstantiator (random, Character::isUpperCase);
+		//PrimitiveInstantiator primitiveInstantiator = new PrimitiveInstantiatorImpl(integerInstantiator,shortInstantiator,longInstantiator,
+		//		doubleInstantiator,floatInstantiator,booleanInstantiator,characterInstantiator,byteInstantiator);
 		instantiators = new HashMap< >(9);
 		instantiators.put(Class::isArray, clazz -> arrayInstantiator.instantiateArray (clazz));
-		instantiators.put(Class::isPrimitive, clazz -> primitiveInstantiator.instantiatePrimitive (clazz));
+		//instantiators.put(Class::isPrimitive, clazz -> primitiveInstantiator.instantiatePrimitive (clazz));
 	}
 
 	/*

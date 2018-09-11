@@ -14,7 +14,7 @@ public class App
         System.out.println( "Hello World!" );
         Simon lib = new Simon ();
         //lib.foo();
-        int[] tmp = lib.instantiate(int[].class);
-        System.out.println(Arrays.toString(tmp));
+        //int[] tmp = lib.instantiate(int[].class);
+      //  System.out.println(Arrays.toString(tmp));
     }
 }
