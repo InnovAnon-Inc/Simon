@@ -19,6 +19,7 @@ import com.innovanon.simon.primitives.floats.RandomFloatPInstantiator;
 import com.innovanon.simon.primitives.ints.RandomIntPInstantiator;
 import com.innovanon.simon.primitives.longs.RandomLongPInstantiator;
 import com.innovanon.simon.primitives.shorts.RandomShortPInstantiator;
+import com.innovanon.simon.reflection_errors.UnsupportedInstantiationClassError;
 
 /**
  * @author gouldbergstein
@@ -58,8 +59,7 @@ public class PrimitiveInstantiator implements Instantiator<Object> {
 				return delegate.get();
 		}
 		assert ! test(t);
-		// TODO
-		throw new Error();
+		throw UnsupportedInstantiationClassError.factory(new Object() {}, t);
 	}
 
 	/*

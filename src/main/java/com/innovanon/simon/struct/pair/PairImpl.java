@@ -46,4 +46,14 @@ public class PairImpl<A, B> implements Pair<A, B> {
 	public B getCDR() {
 		return cdr;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.format("PairImpl [car=%s, cdr=%s]", car, cdr);
+	}
 }

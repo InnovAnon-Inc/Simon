@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import com.innovanon.simon.Simon.ReflectionsWrapper;
 import com.innovanon.simon.instantiators.Instantiators;
 import com.innovanon.simon.instantiators.ObjectInstantiator;
+import com.innovanon.simon.reflection_errors.ClassNotFoundError;
 import com.innovanon.simon.struct.bags.BagImpl;
 import com.innovanon.simon.util.reflection.NameToClassConverter;
 import com.innovanon.simon.util.stream.StreamUtil;
@@ -35,8 +36,9 @@ public class RandomObjectIterable implements Iterable<Object> {
 		Collection<String> classNames = reflectionsWrapper.getReflections().getAllTypes();
 		List<Class<?>> classArray = StreamUtil.errorEatingConversion(classNames.stream(), NameToClassConverter.INSTANCE,
 				Arrays.asList(ExceptionInInitializerError.class, NoClassDefFoundError.class, UnsatisfiedLinkError.class,
-						ClassNotFoundException.class,
-						Error.class, RuntimeException.class))
+						ClassNotFoundException.class,ClassNotFoundError.class,Error.class,RuntimeException.class,Throwable.class/*, 
+						UnsupportedInstantiationClassError.class, ConstructorInstantiationFailedError.class,
+						Error.class, RuntimeException.class*/))
 				.collect(Collectors.toList());
 		Iterable<Class<?>> bag = new BagImpl<>(classArray, random);
 

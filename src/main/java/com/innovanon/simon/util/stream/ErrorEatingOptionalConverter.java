@@ -3,25 +3,18 @@
  */
 package com.innovanon.simon.util.stream;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
-
-import com.innovanon.simon.struct.pair.Pair;
-import com.innovanon.simon.struct.pair.PairImpl;
-import com.innovanon.simon.util.IsInstancePredicate;
 
 /**
  * @author gouldbergstein
  */
 public class ErrorEatingOptionalConverter<A, R> implements Function<A, Optional<R>> {
-	private Function<A, R> nameToClassConverter;
-	private Collection<Class<? extends Throwable>> tastyExceptions;
-	private List<Pair<A, ? extends Throwable>> errors;
+	//private Function<A, R> nameToClassConverter;
+	//private Collection<Class<? extends Throwable>> tastyExceptions;
+	//private List<Pair<A, ? extends Throwable>> errors;
+	private ErrorEatingFunction<A,R> eater;
 
 	/**
 	 * @param nameToClassConverter
@@ -30,10 +23,11 @@ public class ErrorEatingOptionalConverter<A, R> implements Function<A, Optional<
 	 */
 	public ErrorEatingOptionalConverter(Function<A, R> nameToClassConverter,
 			Collection<Class<? extends Throwable>> exceptionClassesToCatch, boolean rememberErrors) {
-		this.nameToClassConverter = nameToClassConverter;
-		tastyExceptions = exceptionClassesToCatch;
-		if (rememberErrors)
-			errors = new ArrayList<>();
+		//this.nameToClassConverter = nameToClassConverter;
+		//tastyExceptions = exceptionClassesToCatch;
+		//if (rememberErrors)
+		//	errors = new ArrayList<>();
+		eater = new ErrorEatingFunction<A,R>(exceptionClassesToCatch, rememberErrors, nameToClassConverter::apply);
 	}
 
 	/**
@@ -49,24 +43,6 @@ public class ErrorEatingOptionalConverter<A, R> implements Function<A, Optional<
 	@Override
 	public Optional<R> apply(A className) {
 		// Objects.requireNonNull(className);
-		try {
-			return Optional.of(nameToClassConverter.apply(className));
-		} catch (Throwable e) {
-			Predicate<? super Class<? extends Throwable>> predicate = new IsInstancePredicate<>(e);
-			if (!tastyExceptions.stream().anyMatch(predicate))
-				throw e;
-			if (errors != null) {
-				Pair<A, ? extends Throwable> pair = new PairImpl<>(className, e);
-				errors.add(pair);
-			}
-			return Optional.empty();
-		}
-	}
-
-	/**
-	 * @return the errors
-	 */
-	public List<Pair<A, ? extends Throwable>> getErrors() {
-		return Collections.unmodifiableList(errors);
+		return eater.apply(className);
 	}
 }

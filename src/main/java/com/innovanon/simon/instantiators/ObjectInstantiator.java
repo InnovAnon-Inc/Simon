@@ -19,6 +19,7 @@ import com.innovanon.simon.objects_special.EnumInstantiator;
 import com.innovanon.simon.objects_special.PopulatedArrayInstantiator;
 import com.innovanon.simon.objects_special.PrimitiveInstantiator;
 import com.innovanon.simon.primitives.ints.RangedRandomIntPInstantiator;
+import com.innovanon.simon.reflection_errors.UnsupportedInstantiationClassError;
 
 /**
  * @author gouldbergstein
@@ -92,7 +93,6 @@ public class ObjectInstantiator implements Instantiators<Object> {
 				return delegate;
 		}
 		assert !test(t);
-		// TODO
-		throw new Error();
+		throw UnsupportedInstantiationClassError.factory(new Object() {}, t);
 	}
 }

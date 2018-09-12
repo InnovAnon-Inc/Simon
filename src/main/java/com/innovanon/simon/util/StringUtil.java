@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.function.Function;
 
 /**
  * @author gouldbergstein
@@ -115,5 +116,49 @@ public enum StringUtil {
 			throw e;
 		}
 		return invocationToString(accessor, object);
+	}
+	
+	public static String toString2(Object object) {
+		if (object == null)
+			return null;
+		Class<?> cls = object.getClass();
+		if (cls.isArray()) {
+			Class<?> ct = cls.getComponentType();
+			if (ct.equals(int.class))
+				return Arrays.toString((int[]) object);
+			if (ct.equals(short.class))
+				return Arrays.toString((short[]) object);
+			if (ct.equals(long.class))
+				return Arrays.toString((long[]) object);
+			if (ct.equals(double.class))
+				return Arrays.toString((double[]) object);
+			if (ct.equals(float.class))
+				return Arrays.toString((float[]) object);
+			if (ct.equals(boolean.class))
+				return Arrays.toString((boolean[]) object);
+			if (ct.equals(byte.class))
+				return Arrays.toString((byte[]) object);
+			if (ct.equals(char.class))
+				return Arrays.toString((char[]) object);
+			//return Arrays.deepToString((Object[]) object);
+			return arrayToString ((Object[])object, StringUtil::toString2);
+		}
+		return object.toString();
+	}
+
+	public static <T> String arrayToString(T[] array, Function<T,String> toString) {
+		StringBuilder ret = new StringBuilder();
+		ret.append('[');
+		boolean flag = true;
+		for (T elem : array) {
+			if (flag) {
+				ret.append(", ");
+				flag = false;
+			}
+			String append = toString.apply (elem);
+			ret.append(append);
+		}
+		ret.append(']');
+		return ret.toString();
 	}
 }

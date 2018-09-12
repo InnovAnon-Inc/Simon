@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 import com.innovanon.simon.instantiator.Instantiator;
+import com.innovanon.simon.reflection_errors.ConstructorInstantiationFailedError;
 import com.innovanon.simon.struct.bags.Bag;
 import com.innovanon.simon.struct.bags.BagImpl;
 
@@ -43,7 +44,12 @@ public class ConstructorInstantiator implements Instantiator<Object> {
 	@Override
 	public boolean test(Class<?> t) {
 		Objects.requireNonNull(t);
-		return t.getConstructors().length != 0;
+		try {
+			return t.getConstructors().length != 0;
+		} catch (NoClassDefFoundError e) {
+			// TODO
+			return false;
+		}
 	}
 
 	/*
@@ -83,7 +89,7 @@ public class ConstructorInstantiator implements Instantiator<Object> {
 				}
 			}
 		} while (!bag.isEmpty());
-		// TODO
-		throw new Error();
+		throw ConstructorInstantiationFailedError.factory(new Object() {
+		}, t);
 	}
 }
