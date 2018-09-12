@@ -3,16 +3,17 @@
  */
 package com.innovanon.simon.Simon;
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.function.Function;
 
-import com.innovanon.simon.conv.NameToClassConverter;
 import com.innovanon.simon.instantiator.ClassToObjectInstantiator;
 import com.innovanon.simon.iter.ConvIterator;
-import com.innovanon.simon.struct.BagImpl;
+import com.innovanon.simon.struct.bags.BagImpl;
+import com.innovanon.simon.util.StringUtil;
 
 /**
  * @author gouldbergstein
@@ -38,12 +39,12 @@ public enum App {
 		Iterator<String> classNameIterator = bag.iterator();
 		//Iterator<Class<?>> classIterator = new ConvIterator<String, Class<?>>(classNameIterator,
 		//		NameToClassConverter.INSTANCE);
-		Iterator<Class<?>> classIterator = Arrays.asList(new Class<?>[] {int[][].class, int[][][].class}).iterator();
+		Iterator<Class<?>> classIterator = Arrays.asList(new Class<?>[] {int.class,int[].class,int[][].class, int[][][].class, String.class}).iterator();
 		Function<Class<?>,Object> objectInstantiator = new ClassToObjectInstantiator(random);
 		Iterator<Object> objectIterator = new ConvIterator<Class<?>, Object>(classIterator, objectInstantiator);
 		while (objectIterator.hasNext()) {
 			Object next = objectIterator.next();
-			System.out.println(Arrays.deepToString((Object[]) next));
+			System.out.println(StringUtil.toString(next));
 		}
 	}
 }

@@ -6,6 +6,8 @@ package com.innovanon.old_simon.Simon2;
 import java.util.Random;
 import java.util.function.IntSupplier;
 
+import com.innovanon.simon.util.CountingUtil;
+
 /**
  * @author gouldbergstein
  *
@@ -17,12 +19,14 @@ public class RangedIntSupplier implements IntSupplier {
 	private int range;
 
 	public RangedIntSupplier(Random random, int min, int max) {
-		this.random=random;
-		this.offset=min;
-		this.range=max - min;
+		this.random = random;
+		this.offset = min;
+		this.range = CountingUtil.exclusiveRange(min, max);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.function.IntSupplier#getAsInt()
 	 */
 	@Override

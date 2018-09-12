@@ -5,7 +5,7 @@ package com.innovanon.simon.iter;
 
 import java.util.Iterator;
 
-import com.innovanon.simon.struct.Bag;
+import com.innovanon.simon.struct.bags.Bag;
 
 /**
  * re-invokes iterable.iterator() once the iterator is exhausted.
