@@ -5,6 +5,7 @@ package com.innovanon.simon.objects_special;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 
@@ -68,6 +69,7 @@ public class PrimitiveInstantiator implements Instantiator<Object> {
 	 */
 	@Override
 	public boolean test(Class<?> t) {
+		Objects.requireNonNull(t);
 		for (PInstantiator<?> delegate : delegates)
 			if (delegate.test(t))
 				return true;

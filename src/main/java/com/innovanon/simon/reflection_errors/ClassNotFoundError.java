@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.innovanon.simon.Simon;
+package com.innovanon.simon.reflection_errors;
+
+import java.util.Objects;
 
 /**
  * @author gouldbergstein
@@ -22,6 +24,7 @@ public class ClassNotFoundError extends Error {
 	public ClassNotFoundError(String message, ClassNotFoundException cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
+		Objects.requireNonNull(cause);
 	}
 
 	/**
@@ -30,6 +33,7 @@ public class ClassNotFoundError extends Error {
 	 */
 	public ClassNotFoundError(String message, ClassNotFoundException cause) {
 		super(message, cause);
+		Objects.requireNonNull(cause);
 	}
 
 	/**
@@ -37,5 +41,6 @@ public class ClassNotFoundError extends Error {
 	 */
 	public ClassNotFoundError(ClassNotFoundException cause) {
 		super(cause);
+		Objects.requireNonNull(cause);
 	}
 }

@@ -9,6 +9,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 
@@ -41,6 +42,7 @@ public class AnnotationInstantiator implements Instantiator<Object> {
 	 */
 	@Override
 	public boolean test(Class<?> t) {
+		Objects.requireNonNull(t);
 		return t.isAnnotation();
 	}
 

@@ -4,6 +4,7 @@
 package com.innovanon.simon.iter;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 import com.innovanon.simon.struct.bags.Bag;
 
@@ -22,6 +23,7 @@ public class Reiterator<T> implements Iterator<T> {
 	 * @see Reiterator#iterable
 	 */
 	public Reiterator(Iterable<T> iterable) {
+		Objects.requireNonNull(iterable);
 		this.iterable = iterable;
 		iterator = iterable.iterator();
 	}

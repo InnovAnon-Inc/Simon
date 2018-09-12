@@ -3,6 +3,8 @@
  */
 package com.innovanon.simon.primitives;
 
+import java.util.Objects;
+
 /**
  * @author gouldbergstein
  *
@@ -16,6 +18,8 @@ public abstract class PInstantiatorAbs<T> implements PInstantiator<T> {
 	 * @param pClass
 	 */
 	protected PInstantiatorAbs(Class<T> pClass, Class<T> tClass) {
+		Objects.requireNonNull(tClass);
+		Objects.requireNonNull(pClass);
 		this.tClass = tClass;
 		this.pClass = pClass;
 	}

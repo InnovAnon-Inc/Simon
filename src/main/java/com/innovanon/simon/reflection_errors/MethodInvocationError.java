@@ -1,18 +1,25 @@
 /**
  * 
  */
-package com.innovanon.simon.util;
+package com.innovanon.simon.reflection_errors;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * @author gouldbergstein
  *
  */
-public class MethodInvocationError extends Error {
+public class MethodInvocationError extends DynamicallyTypeCheckedError {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4168188287745365633L;
+
+	private static final Collection<Class<? extends Throwable>> TYPES = Arrays.asList(IllegalAccessException.class,
+			IllegalArgumentException.class, InvocationTargetException.class);
 
 	/**
 	 * @param message
@@ -22,8 +29,7 @@ public class MethodInvocationError extends Error {
 	 */
 	public MethodInvocationError(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-		// TODO Auto-generated constructor stub
+		super(message, cause, enableSuppression, writableStackTrace, TYPES);
 	}
 
 	/**
@@ -31,15 +37,13 @@ public class MethodInvocationError extends Error {
 	 * @param cause
 	 */
 	public MethodInvocationError(String message, Throwable cause) {
-		super(message, cause);
-		// TODO Auto-generated constructor stub
+		super(message, cause, TYPES);
 	}
 
 	/**
 	 * @param cause
 	 */
 	public MethodInvocationError(Throwable cause) {
-		super(cause);
-		// TODO Auto-generated constructor stub
+		super(cause, TYPES);
 	}
 }

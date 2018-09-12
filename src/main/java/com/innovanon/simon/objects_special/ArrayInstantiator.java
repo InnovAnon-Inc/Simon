@@ -4,6 +4,7 @@
 package com.innovanon.simon.objects_special;
 
 import java.lang.reflect.Array;
+import java.util.Objects;
 import java.util.function.IntSupplier;
 
 import com.innovanon.simon.instantiator.Instantiator;
@@ -20,6 +21,7 @@ public class ArrayInstantiator implements Instantiator<Object> {
 	 * @param lengths
 	 */
 	public ArrayInstantiator(IntSupplier lengths) {
+		Objects.requireNonNull(lengths);
 		this.lengths = lengths;
 	}
 
@@ -28,6 +30,7 @@ public class ArrayInstantiator implements Instantiator<Object> {
 	 */
 	@Override
 	public boolean test(Class<?> t) {
+		Objects.requireNonNull(t);
 		return t.isArray();
 	}
 
@@ -36,6 +39,7 @@ public class ArrayInstantiator implements Instantiator<Object> {
 	 */
 	@Override
 	public Object apply(Class<?> t) {
+		Objects.requireNonNull(t);
 		Class<?> componentType = t.getComponentType();
 		int length=lengths.getAsInt();
 		return Array.newInstance(componentType, length);

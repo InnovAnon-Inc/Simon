@@ -4,6 +4,7 @@
 package com.innovanon.simon.iter;
 
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.function.Function;
 
 /**
@@ -23,6 +24,8 @@ public class ConvIterator<T, E> implements Iterator<E> {
 	 * @see ConvIterator#converter
 	 */
 	public ConvIterator(Iterator<T> iterator, Function<T, E> converter) {
+		Objects.requireNonNull(iterator);
+		Objects.requireNonNull(converter);
 		this.iterator = iterator;
 		this.converter = converter;
 	}

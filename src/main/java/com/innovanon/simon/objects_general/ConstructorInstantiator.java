@@ -6,6 +6,7 @@ package com.innovanon.simon.objects_general;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
 
@@ -19,14 +20,17 @@ import com.innovanon.simon.struct.bags.BagImpl;
  */
 public class ConstructorInstantiator implements Instantiator<Object> {
 
+	private static int RETRIES = 20;
+
 	private Random random;
-	private Function<Class<?>, Object> objects;
+	private Function<Class<?>, Instantiator<Object>> objects;
 
 	/**
 	 * @param random
 	 * @param objects
 	 */
-	public ConstructorInstantiator(Random random, Function<Class<?>, Object> objects) {
+	public ConstructorInstantiator(Random random, Function<Class<?>, Instantiator<Object>> objects) {
+		Objects.requireNonNull(objects);
 		this.random = random;
 		this.objects = objects;
 	}
@@ -38,6 +42,7 @@ public class ConstructorInstantiator implements Instantiator<Object> {
 	 */
 	@Override
 	public boolean test(Class<?> t) {
+		Objects.requireNonNull(t);
 		return t.getConstructors().length != 0;
 	}
 
@@ -48,27 +53,37 @@ public class ConstructorInstantiator implements Instantiator<Object> {
 	 */
 	@Override
 	public Object apply(Class<?> t) {
+		Objects.requireNonNull(t);
 		Constructor<?>[] constructors = t.getConstructors();
 		Bag<Constructor<?>> bag = new BagImpl<Constructor<?>>(Arrays.asList(constructors), random);
 		do {
-		Constructor<?> constructor = bag.remove();
-		Class<?>[] parameterTypes = constructor.getParameterTypes();
-		// TODO re-try with different parameters
-		Object[] parameters = new Object[parameterTypes.length];
-		for (int index = 0; index < parameterTypes.length; index++) {
-			Class<?> parameterType = parameterTypes[index];
-			Object parameter = objects.apply(parameterType);
-			parameters[index] = parameter;
-		}
-		try {
-			return constructor.newInstance(parameters);
-		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-			// TODO
-			//throw new Error(e);
-		}
+			Constructor<?> constructor = bag.remove();
+			Class<?>[] parameterTypes = constructor.getParameterTypes();
+
+			Instantiator<Object>[] instantiators = new Instantiator[parameterTypes.length];
+			for (int index = 0; index < parameterTypes.length; index++) {
+				Class<?> parameterType = parameterTypes[index];
+				instantiators[index] = objects.apply(parameterType);
+			}
+
+			// TODO retry until instantiators are exhausted
+			for (int k = 1; k <= RETRIES; k++) {
+				Object[] parameters = new Object[parameterTypes.length];
+				for (int index = 0; index < parameterTypes.length; index++) {
+					Class<?> parameterType = parameterTypes[index];
+					Object parameter = instantiators[index].apply(parameterType);
+					parameters[index] = parameter;
+				}
+				try {
+					return constructor.newInstance(parameters);
+				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+						| InvocationTargetException e) {
+					// TODO
+					// throw new ConstructorInvocationError(e);
+				}
+			}
 		} while (!bag.isEmpty());
 		// TODO
-		throw new Error ();
+		throw new Error();
 	}
 }

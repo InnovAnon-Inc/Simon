@@ -36,36 +36,37 @@ public enum StringUtil {
 		return String.join(delimiter, elements);
 	}
 
-	public static String toString(Object object) {
-		if (object == null)return null;
+	public static String toString(Object object) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+		if (object == null)
+			return null;
 		if (object instanceof String)
 			return object.toString();
-		Class<?>cls = object.getClass();
+		Class<?> cls = object.getClass();
 		if (cls.isArray()) {
 			Class<?> ct = cls.getComponentType();
 			if (ct.equals(int.class))
-				return Arrays.toString((int[])object);
+				return Arrays.toString((int[]) object);
 			if (ct.equals(short.class))
-				return Arrays.toString((short[])object);
+				return Arrays.toString((short[]) object);
 			if (ct.equals(long.class))
-				return Arrays.toString((long[])object);
+				return Arrays.toString((long[]) object);
 			if (ct.equals(double.class))
-				return Arrays.toString((double[])object);
+				return Arrays.toString((double[]) object);
 			if (ct.equals(float.class))
-				return Arrays.toString((float[])object);
+				return Arrays.toString((float[]) object);
 			if (ct.equals(boolean.class))
-				return Arrays.toString((boolean[])object);
+				return Arrays.toString((boolean[]) object);
 			if (ct.equals(byte.class))
-				return Arrays.toString((byte[])object);
-			if(ct.equals(char.class))
-				return Arrays.toString((char[])object);
+				return Arrays.toString((byte[]) object);
+			if (ct.equals(char.class))
+				return Arrays.toString((char[]) object);
 			// TODO
-			return Arrays.deepToString((Object[])object);
+			return Arrays.deepToString((Object[]) object);
 		}
 		return toString(object, new Method[0]);
 	}
-	
-	public static String toString(Object object, Method[] accessors) {
+
+	public static String toString(Object object, Method[] accessors) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		if (object == null)
 			return null;
 		StringBuilder ret = new StringBuilder();
@@ -84,13 +85,15 @@ public enum StringUtil {
 		return ret.toString();
 	}
 
-	public static String invocationToString(Method accessor, Object object) {
+	public static String invocationToString(Method accessor, Object object)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		StringBuilder ret = new StringBuilder();
 		Object returnValue;
 		try {
 			returnValue = accessor.invoke(object);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			throw new MethodInvocationError(e);
+			// throw new MethodInvocationError(e);
+			throw e;
 		}
 		// if (index > 0)
 		// ret.append(", ");
@@ -101,13 +104,15 @@ public enum StringUtil {
 		return ret.toString();
 	}
 
-	public static String invocationToString(String accessorName, Object object) {
+	public static String invocationToString(String accessorName, Object object) throws IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Class<?> cls = object.getClass();
 		Method accessor;
 		try {
 			accessor = cls.getMethod(accessorName);
 		} catch (NoSuchMethodException | SecurityException e) {
-			throw new GetMethodError(e);
+			// throw new GetMethodError(e);
+			throw e;
 		}
 		return invocationToString(accessor, object);
 	}

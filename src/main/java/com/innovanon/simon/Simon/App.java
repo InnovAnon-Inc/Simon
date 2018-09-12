@@ -3,7 +3,7 @@
  */
 package com.innovanon.simon.Simon;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -11,6 +11,9 @@ import java.util.Random;
 import java.util.function.Function;
 
 import com.innovanon.simon.instantiator.ClassToObjectInstantiator;
+import com.innovanon.simon.instantiator.RandomObjectIterable;
+import com.innovanon.simon.instantiators.Instantiators;
+import com.innovanon.simon.instantiators.ObjectInstantiator;
 import com.innovanon.simon.iter.ConvIterator;
 import com.innovanon.simon.struct.bags.BagImpl;
 import com.innovanon.simon.util.StringUtil;
@@ -26,25 +29,14 @@ public enum App {
 
 	}
 
-	public static void main(String... args) {
-		ReflectionsWrapper reflectionsWrapper = ReflectionsWrapper.INSTANCE;
-		Collection<String> classNames = reflectionsWrapper.getReflections().getAllTypes();
-		// System.out.println(classNames);
-		// int initialCapacity = classNames.size();
+	public static void main(String... args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Random random = new Random();
-		Iterable<String> bag = new BagImpl<>(classNames, random);
-		//Iterator<String> classNameIterator = new Reiterator<>(bag);
-		//for (int k = 1; k <= 10 && classNameIterator.hasNext(); k++)
-		//	System.out.println(classNameIterator.next());
-		Iterator<String> classNameIterator = bag.iterator();
-		//Iterator<Class<?>> classIterator = new ConvIterator<String, Class<?>>(classNameIterator,
-		//		NameToClassConverter.INSTANCE);
-		Iterator<Class<?>> classIterator = Arrays.asList(new Class<?>[] {int.class,int[].class,int[][].class, int[][][].class, String.class}).iterator();
-		Function<Class<?>,Object> objectInstantiator = new ClassToObjectInstantiator(random);
-		Iterator<Object> objectIterator = new ConvIterator<Class<?>, Object>(classIterator, objectInstantiator);
-		while (objectIterator.hasNext()) {
-			Object next = objectIterator.next();
-			System.out.println(StringUtil.toString(next));
+		Iterable<Object> iterable = new RandomObjectIterable(random);
+		Iterator<Object> iterator = iterable.iterator();
+		while (iterator.hasNext()) {
+			Object next = iterator.next();
+			String string = StringUtil.toString(next);
+			System.out.println(string);
 		}
 	}
 }

@@ -3,6 +3,7 @@
  */
 package com.innovanon.simon.objects_special;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import com.innovanon.simon.instantiator.Instantiator;
@@ -20,6 +21,8 @@ public class PopulatedArrayInstantiator implements Instantiator<Object> {
 	 * @param populator
 	 */
 	public PopulatedArrayInstantiator(Instantiator<Object> instantiator, Consumer<Object> populator) {
+		Objects.requireNonNull(instantiator);
+		Objects.requireNonNull(populator);
 		this.instantiator = instantiator;
 		this.populator = populator;
 	}
