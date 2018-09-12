@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
 
-import com.innovanon.struct.Bag;
-import com.innovanon.struct.BagImpl;
-import com.innovanon.struct.iter.Reiterator;
+import com.innovanon.simon.iter.Reiterator;
+import com.innovanon.simon.struct.Bag;
+import com.innovanon.simon.struct.BagImpl;
 
 /**
  * @author gouldbergstein

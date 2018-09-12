@@ -18,7 +18,7 @@ about the software, its performance or its conformity to any specification.
 
 package tracing.lib;
 
-import com.innovanon.simon.Simon0.App;
+import com.innovanon.old_simon.Simon0.App;
 
 /**
  *

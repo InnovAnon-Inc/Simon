@@ -13,8 +13,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.innovanon.struct.Bag;
-import com.innovanon.struct.BagImpl;
+import com.innovanon.simon.struct.Bag;
+import com.innovanon.simon.struct.BagImpl;
 
 /**
  * @author gouldbergstein
@@ -59,7 +59,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#BagImpl(int, java.util.Random)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#BagImpl(int, java.util.Random)}.
 	 */
 	@Test
 	void testBagImpl() {
@@ -67,7 +67,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#size()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#size()}.
 	 */
 	@Test
 	void testSize() {
@@ -76,7 +76,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#isEmpty()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#isEmpty()}.
 	 */
 	@Test
 	void testIsEmpty() {
@@ -84,7 +84,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#contains(java.lang.Object)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#contains(java.lang.Object)}.
 	 */
 	@Test
 	void testContains() {
@@ -92,7 +92,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#iterator()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#iterator()}.
 	 */
 	@Test
 	void testIterator() {
@@ -100,7 +100,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#toArray()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#toArray()}.
 	 */
 	@Test
 	void testToArray() {
@@ -108,7 +108,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#toArray(T[])}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#toArray(T[])}.
 	 */
 	@Test
 	void testToArrayTArray() {
@@ -116,7 +116,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#add(java.lang.Object)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#add(java.lang.Object)}.
 	 */
 	@Test
 	void testAdd() {
@@ -124,7 +124,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#remove(java.lang.Object)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#remove(java.lang.Object)}.
 	 */
 	@Test
 	void testRemoveObject() {
@@ -132,7 +132,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#containsAll(java.util.Collection)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#containsAll(java.util.Collection)}.
 	 */
 	@Test
 	void testContainsAll() {
@@ -140,7 +140,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#addAll(java.util.Collection)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#addAll(java.util.Collection)}.
 	 */
 	@Test
 	void testAddAll() {
@@ -148,7 +148,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#removeAll(java.util.Collection)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#removeAll(java.util.Collection)}.
 	 */
 	@Test
 	void testRemoveAll() {
@@ -156,7 +156,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#retainAll(java.util.Collection)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#retainAll(java.util.Collection)}.
 	 */
 	@Test
 	void testRetainAll() {
@@ -164,7 +164,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#clear()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#clear()}.
 	 */
 	@Test
 	void testClear() {
@@ -172,7 +172,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#offer(java.lang.Object)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#offer(java.lang.Object)}.
 	 */
 	@Test
 	void testOffer() {
@@ -180,7 +180,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#remove()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#remove()}.
 	 */
 	@Test
 	void testRemove() {
@@ -188,7 +188,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#poll()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#poll()}.
 	 */
 	@Test
 	void testPoll() {
@@ -196,7 +196,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#element()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#element()}.
 	 */
 	@Test
 	void testElement() {
@@ -204,7 +204,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#peek()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#peek()}.
 	 */
 	@Test
 	void testPeek() {
@@ -212,7 +212,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#bulkRemove(int)}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#bulkRemove(int)}.
 	 */
 	@Test
 	void testBulkRemoveInt() {
@@ -220,7 +220,7 @@ class BagImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.innovanon.struct.BagImpl#bulkRemove()}.
+	 * Test method for {@link com.innovanon.simon.struct.BagImpl#bulkRemove()}.
 	 */
 	@Test
 	void testBulkRemove() {

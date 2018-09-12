@@ -3,7 +3,6 @@
  */
 package com.innovanon.simon.Simon;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,14 +37,14 @@ public enum ReflectionsWrapper {
 	/**
 	 * @see Reflections#getAllTypes()
 	 */
-	private Collection<String> types;
+	//private Collection<String> types;
 
 	/**
 	 * @see #initReflections()
 	 */
 	ReflectionsWrapper() {
 		initReflections();
-		types = reflections.getAllTypes();
+		//types = reflections.getAllTypes();
 		// types = reflections.getSubTypesOf(Object.class);
 	}
 
@@ -74,8 +73,9 @@ public enum ReflectionsWrapper {
 		cb.useParallelExecutor(Runtime.getRuntime().availableProcessors());
 
 		cb.setScanners(new SubTypesScanner(false), new ResourcesScanner(), new TypeElementsScanner());
-		cb.addScanners(new FieldAnnotationsScanner(), new MethodAnnotationsScanner(), new TypeAnnotationsScanner());
-		cb.addScanners(new MemberUsageScanner(), new MethodParameterNamesScanner(), new MethodParameterScanner());
+		//cb.addScanners(new FieldAnnotationsScanner(), new MethodAnnotationsScanner(), new TypeAnnotationsScanner());
+		//cb.addScanners(new MemberUsageScanner(), new MethodParameterNamesScanner(), new MethodParameterScanner());
+		//
 		// cb.addScanners(new SubTypesScanner(false), new ResourcesScanner(), new
 		// TypeElementsScanner());
 		// cb.setScanners(new SubTypesScanner(false));
@@ -98,10 +98,19 @@ public enum ReflectionsWrapper {
 	}
 
 	/**
+	 * @return the reflections
+	 */
+	public Reflections getReflections() {
+		return reflections;
+	}
+
+	/**
 	 * @return the types
 	 * @see #types
 	 */
-	public Collection<String> getTypes() {
-		return types;
-	}
+	//public Collection<String> getTypes() {
+	//	return types;
+	//}
+	
+	
 }

@@ -3,6 +3,8 @@
  */
 package com.innovanon.simon.fluff;
 
+import com.innovanon.simon.util.StringUtil;
+
 /**
  * @author gouldbergstein
  *
@@ -38,21 +40,11 @@ public class Dick {
 		this.length = length;
 	}
 	
-	/**
-	 * https://stackoverflow.com/questions/19198048/how-to-repeat-string-n-times-in-java
-	 * @param str
-	 * @param n
-	 * @return
-	 */
-	private String repeat (String str, int n) {
-		return String.valueOf(new char[n]).replace("\0", str);
-	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return String.format("Dick [%s%s]", repeat (shaft, length), glans);
+		return String.format("Dick [%s%s]", StringUtil.repeatv1 (shaft, length), glans);
 	}		
 }
