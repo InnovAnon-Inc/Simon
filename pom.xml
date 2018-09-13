@@ -3,17 +3,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+        <groupId>com.innovanon.parent_pom</groupId>
+        <artifactId>ParentPom</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.innovanon.simon</groupId>
 	<artifactId>Simon</artifactId>
-	<!-- <version>0.0.1-SNAPSHOT</version> -->
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	<description>Instantiates Random Objects</description>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.innovanon.struct</groupId>
+			<artifactId>Structs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		</dependencies>
 
+<!-- 
 	<name>${project.artifactId}</name>
 	<url>https://innovanon-inc.github.io/${project.artifactId}.git</url>
-	<description>Instantiates Random Objects</description>
+	
 
 	<issueManagement>
 	<system>Bugzilla</system>
@@ -77,14 +92,14 @@
 		<maven.compiler.target>${targetJDK}</maven.compiler.target>
 		<targetJdk>${targetJDK}</targetJdk>
 
-		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj> <org.aspectj.version>1.7.1</org.aspectj.version> -->
-
+-->		<!-- <version-plugin-aspectj>1.7-SNAPSHOT</version-plugin-aspectj> <org.aspectj.version>1.7.1</org.aspectj.version> -->
+<!-- 
 		<version-plugin-aspectj>1.11</version-plugin-aspectj>
-		<!-- <version-plugin-aspectj>1.5</version-plugin-aspectj> -->
-
+-->		<!-- <version-plugin-aspectj>1.5</version-plugin-aspectj> -->
+<!--
 		<org.aspectj.version>${version-plugin-aspectj}</org.aspectj.version>
-		<!-- <aspectjVersion>1.9.1</aspectjVersion> -->
-		<aspectjVersion>${java.version}.1</aspectjVersion>
+-->		<!-- <aspectjVersion>1.9.1</aspectjVersion> -->
+<!--		<aspectjVersion>${java.version}.1</aspectjVersion>
 		<org.aspectj.version>${aspectjVersion}</org.aspectj.version>
 		<mavenVersion>3.5.4</mavenVersion>
 		<changesPluginVersion>2.12.1</changesPluginVersion>
@@ -109,9 +124,9 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj.version}</version>
-			<!-- <scope>runtime</scope> -->
-		</dependency>
-		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-aop</artifactId> 
+-->			<!-- <scope>runtime</scope> -->
+<!--		</dependency>
+-->		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-aop</artifactId> 
 			<version>${org.aspectj.version}</version> </dependency> -->
 		<!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjweaver</artifactId> 
 			<version>${org.aspectj.version}</version> </dependency> -->
@@ -132,7 +147,7 @@
 			</dependency> -->
 		<!-- <dependency> <groupId>com.github.olivergondza</groupId> <artifactId>maven-jdk-tools-wrapper</artifactId> 
 			<version>0.1</version> </dependency> -->
-
+<!--
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -144,20 +159,20 @@
 		<dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
-			<!-- use latest version of Reflections -->
-			<version>${reflections.version}</version>
+-->			<!-- use latest version of Reflections -->
+<!--			<version>${reflections.version}</version>
 		</dependency>
 
 
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<!-- any version of Groovy \>= 1.5.0 should work here -->
-			<version>2.5.1</version>
+-->			<!-- any version of Groovy \>= 1.5.0 should work here -->
+<!--			<version>2.5.1</version>
 			<scope>runtime</scope>
 			<type>pom</type>
-			<!-- <version>2.4.3</version> -->
-		</dependency>
+-->			<!-- <version>2.4.3</version> -->
+<!--		</dependency>
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -175,12 +190,12 @@
 					<source>${targetJdk}</source>
 					<target>${targetJdk}</target>
 					<complianceLevel>${targetJdk}</complianceLevel>
-					<!-- <Xlint>ignore</Xlint> -->
-					<verbose>true</verbose>
+-->					<!-- <Xlint>ignore</Xlint> -->
+<!--					<verbose>true</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
-					<!-- <aspectLibraries> <aspectLibrary> <groupId>org.springframework</groupId> 
+-->					<!-- <aspectLibraries> <aspectLibrary> <groupId>org.springframework</groupId> 
 						<artifactId>spring-aspects</artifactId> </aspectLibrary> </aspectLibraries> -->
-				</configuration>
+<!--				</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -190,9 +205,9 @@
 					</execution>
 				</executions>
 				<dependencies>
-					<!-- Ensure aspectj tools version used by compiler is the same version 
+-->					<!-- Ensure aspectj tools version used by compiler is the same version 
 						used as dependency. Avoids warning -->
-					<dependency>
+<!--					<dependency>
 						<groupId>org.aspectj</groupId>
 						<artifactId>aspectjtools</artifactId>
 						<version>${org.aspectj.version}</version>
@@ -200,7 +215,7 @@
 				</dependencies>
 			</plugin>
 
-			<!-- <plugin> <artifactId>maven-source-plugin</artifactId> <executions> 
+-->			<!-- <plugin> <artifactId>maven-source-plugin</artifactId> <executions> 
 				<execution> <id>attach-sources</id> <goals> <goal>jar</goal> </goals> </execution> 
 				</executions> </plugin> <plugin> <artifactId>maven-javadoc-plugin</artifactId> 
 				<executions> <execution> <id>attach-javadocs</id> <goals> <goal>jar</goal> 
@@ -213,7 +228,7 @@
 				<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url> </configuration> 
 				<executions> <execution> <id>bintray-deploy</id> <goals> <goal>deploy</goal> 
 				<goal>publish</goal> </goals> </execution> </executions> </plugin> -->
-			<plugin>
+<!--			<plugin>
 				<groupId>org.codehaus.gmavenplus</groupId>
 				<artifactId>gmavenplus-plugin</artifactId>
 				<version>1.5</version>
@@ -237,18 +252,18 @@
 					<dependency>
 						<groupId>org.reflections</groupId>
 						<artifactId>reflections</artifactId>
-						<!-- use latest version of Reflections -->
-						<version>${reflections.version}</version>
+-->						<!-- use latest version of Reflections -->
+<!--						<version>${reflections.version}</version>
 					</dependency>
 					<dependency>
 						<groupId>org.codehaus.groovy</groupId>
 						<artifactId>groovy-all</artifactId>
-						<!-- any version of Groovy \>= 1.5.0 should work here -->
-						<version>2.5.1</version>
+-->						<!-- any version of Groovy \>= 1.5.0 should work here -->
+<!--						<version>2.5.1</version>
 						<scope>runtime</scope>
 						<type>pom</type>
-						<!-- <version>2.4.3</version> -->
-					</dependency>
+-->						<!-- <version>2.4.3</version> -->
+<!--					</dependency>
 					<dependency>
 						<groupId>dom4j</groupId>
 						<artifactId>dom4j</artifactId>
@@ -364,7 +379,7 @@
       <id>localDropbox</id>
       <url>${dropbox.site}/</url>
     </site>
-
+-->
 <!-- 
 		<repository>
 			<id>bintray-innovanon-inc-Simon</id>
@@ -378,7 +393,7 @@
 		<!-- <snapshotRepository> <id>bintray-innovanon-inc-Simon</id> <name>InnovAnon-Inc-Simon</name> 
 			<url>https://api.bintray.com/maven/innovanon-inc/Simon/Simon/</url> <uniqueVersion>false</uniqueVersion> 
 			</snapshotRepository> -->
-	</distributionManagement>
+<!--	</distributionManagement>
 
 
 
@@ -430,6 +445,7 @@
 		</profile>
 
 	</profiles>
+-->
 </project>
 
 
