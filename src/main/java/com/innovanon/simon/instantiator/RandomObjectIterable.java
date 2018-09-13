@@ -14,9 +14,9 @@ import com.innovanon.simon.Simon.ReflectionsWrapper;
 import com.innovanon.simon.instantiators.Instantiators;
 import com.innovanon.simon.instantiators.ObjectInstantiator;
 import com.innovanon.simon.reflection_errors.ClassNotFoundError;
-import com.innovanon.simon.struct.bags.BagImpl;
 import com.innovanon.simon.util.reflection.NameToClassConverter;
 import com.innovanon.simon.util.stream.StreamUtil;
+import com.innovanon.struct.Structs.bag.BagImpl;
 
 /**
  * @author gouldbergstein

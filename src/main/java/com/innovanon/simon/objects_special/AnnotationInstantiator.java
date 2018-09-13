@@ -17,8 +17,8 @@ import org.reflections.Reflections;
 
 import com.innovanon.simon.Simon.ReflectionsWrapper;
 import com.innovanon.simon.instantiator.Instantiator;
-import com.innovanon.simon.struct.bags.Bag;
-import com.innovanon.simon.struct.bags.BagImpl;
+import com.innovanon.struct.Structs.bag.Bag;
+import com.innovanon.struct.Structs.bag.BagImpl;
 
 /**
  * @author gouldbergstein

@@ -11,8 +11,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Simon</name>
-	<url>https://innovanon-inc.github.io/Simon</url>
+	<name>${project.artifactId}</name>
+	<url>https://innovanon-inc.github.io/${project.artifactId}.git</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,6 +42,12 @@
 
 
 	<dependencies>
+		<dependency>
+			<groupId>com.innovanon.struct</groupId>
+			<artifactId>Structs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -234,6 +240,12 @@
     <repository>
         <id>localDropbox</id>
         <url>${dropbox.path}</url>
+        <snapshots>
+        <enabled>true</enabled>
+        </snapshots>
+        <releases>
+        <enabled>true</enabled>
+        </releases>
     </repository>
 </repositories>
 	<distributionManagement>

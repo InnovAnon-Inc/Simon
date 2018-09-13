@@ -5,7 +5,7 @@ package com.innovanon.simon.bod;
 
 import java.util.function.Consumer;
 
-import com.innovanon.simon.struct.bags.Bag;
+import com.innovanon.struct.Structs.bag.Bag;
 
 /**
  * @author gouldbergstein

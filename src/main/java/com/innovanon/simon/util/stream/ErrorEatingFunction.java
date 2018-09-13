@@ -7,8 +7,8 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.function.Function;
 
-import com.innovanon.simon.struct.pair.Pair;
-import com.innovanon.simon.struct.pair.PairImpl;
+import com.innovanon.struct.Structs.pair.Pair;
+import com.innovanon.struct.Structs.pair.PairImpl;
 
 /**
  * @author gouldbergstein

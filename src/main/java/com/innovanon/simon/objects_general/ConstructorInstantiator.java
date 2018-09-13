@@ -12,8 +12,8 @@ import java.util.function.Function;
 
 import com.innovanon.simon.instantiator.Instantiator;
 import com.innovanon.simon.reflection_errors.ConstructorInstantiationFailedError;
-import com.innovanon.simon.struct.bags.Bag;
-import com.innovanon.simon.struct.bags.BagImpl;
+import com.innovanon.struct.Structs.bag.Bag;
+import com.innovanon.struct.Structs.bag.BagImpl;
 
 /**
  * @author gouldbergstein
