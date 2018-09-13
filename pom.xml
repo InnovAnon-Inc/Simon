@@ -13,6 +13,61 @@
 
 	<name>${project.artifactId}</name>
 	<url>https://innovanon-inc.github.io/${project.artifactId}.git</url>
+	<description>Instantiates Random Objects</description>
+
+	<issueManagement>
+	<system>Bugzilla</system>
+	<url>http://lmaddox.chickenkiller.com:1234</url>
+	</issueManagement>
+ 	
+ 	<ciManagement>
+ 	<system>Jenkins</system>
+ 	<url>http://lmaddox.chickenkiller.com:8080</url>
+      <notifiers>
+         <notifier>
+            <type>mail</type>
+            <address>InnovAnon-Inc@protonmail.com</address>
+         </notifier>
+      </notifiers>
+ 	</ciManagement>
+ 	
+ 	<developers>
+ 	<developer>
+ 	<email>laurence.a.maddox@gmail.com</email>
+ 	<name>Brahmjot Singh Khalsa</name>
+ 	<organization>InnovAnon, Inc. (Ministries)</organization>
+ 	<organizationUrl>https://innovanon-inc.github.io/LHP</organizationUrl>
+ 	<roles>
+ 	<role>Senior Ministerial Director</role>
+ 	<role>Senior Managing Director</role>
+ 	<role>Project Manager</role>
+ 	<role>Software Architect</role>
+ 	<role>Software Engineer</role>
+ 	<role>Dev Ops Engineer</role>
+ 	<role>Graphic Designer</role>
+ 	<role>Film Score Producer</role>
+ 	</roles>
+ 	<timezone>-5</timezone>
+ 	<url>https://github.com/lmaddox</url>
+ 	</developer>
+ 	</developers>
+ 	
+ 	<mailingLists>
+     <mailingList>
+       <name>${project.artifactId} project mailing list</name>
+       <subscribe>dev-subscribe@innovanon.com</subscribe>
+       <unsubscribe>dev-unsubscribe@innovanon.com</unsubscribe>
+      <post>dev@innovanon.com</post>
+      <archive>http://lmaddox.chickenkiller.com/modmbox/dev/</archive>
+     </mailingList>
+   </mailingLists>
+   
+   <scm>
+		<connection>scm:git:https://github.com/InnovAnon-Inc/${project.artifactId}}.git</connection>
+		<developerConnection>scm:git:git@github.com:InnovAnon-Inc/${project.artifactId}.git</developerConnection>
+		<url>https://github.com/InnovAnon-Inc/${project.artifactId}</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -277,12 +332,17 @@
     </plugins>
 	</reporting>
 
-	<scm>
-		<connection>scm:git:https://github.com/InnovAnon-Inc/${project.artifactId}}.git</connection>
-		<developerConnection>scm:git:git@github.com:InnovAnon-Inc/${project.artifactId}.git</developerConnection>
-		<url>https://github.com/InnovAnon-Inc/${project.artifactId}</url>
-		<tag>HEAD</tag>
-	</scm>
+
+
+
+
+
+
+
+
+
+
+
 	<repositories>
     <repository>
         <id>localDropbox</id>
