@@ -36,7 +36,9 @@
 		
 		<reflections.version>0.9.11</reflections.version>
 		
-		<dropbox.path>file:///opt/files/Dropbox/mvn-repo</dropbox.path>
+		<dropbox.path>file:///opt/files/Dropbox</dropbox.path>
+		<dropbox.repo>${dropbox.path}/mvn-repo</dropbox.repo>
+		<dropbox.site>${dropbox.path}/www/docs/${project.artifactId}</dropbox.site>
 	</properties>
 
 
@@ -208,7 +210,7 @@
 	                    <archive>
 		                    <index>true</index>
 		                    <manifest>
-		                        <mainClass>com.innovanon.simon.Simon.App</mainClass>
+		                        <mainClass>${project.groupId}.${project.artifactId}.App.App</mainClass>
 		                    </manifest>
 	                	</archive>
                     </configuration>
@@ -229,6 +231,51 @@
         </plugin>
 		</plugins>
 	</build>
+	
+	<reporting>
+	    <plugins>
+	            <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-site-plugin</artifactId>
+    <version>3.7.1</version>
+    <configuration>
+    </configuration>
+</plugin>        
+   
+   
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.0.1</version>
+        <configuration>
+          <author>InnovAnon, Inc.</author>
+          <defaultAuthor>InnovAnon, Inc.</defaultAuthor>
+          <defaultSince>2010</defaultSince>
+          <detectLinks>true</detectLinks>
+          <footer>Om Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
+          Krim Krim Krim Hum Hum Hrim Hrim Svaha</footer>
+          <header>Om Krim Krim Krim Hum Hum Hrim Hrim Daksine Kalike
+          Krim Krim Krim Hum Hum Hrim Hrim Svaha</header>
+          <level>private</level>
+          <linksource>true</linksource>
+          <old>true</old>
+          <packagesheader>Free Code for a Free World</packagesheader>
+          <show>private</show>
+          <validateLinks>true</validateLinks>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.5</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.8</version>
+      </plugin>
+    </plugins>
+	</reporting>
 
 	<scm>
 		<connection>scm:git:https://github.com/InnovAnon-Inc/${project.artifactId}}.git</connection>
@@ -239,7 +286,7 @@
 	<repositories>
     <repository>
         <id>localDropbox</id>
-        <url>${dropbox.path}</url>
+        <url>${dropbox.repo}</url>
         <snapshots>
         <enabled>true</enabled>
         </snapshots>
@@ -251,8 +298,12 @@
 	<distributionManagement>
  <repository>
         <id>localDropbox</id>
-        <url>${dropbox.path}</url>
+        <url>${dropbox.repo}</url>
     </repository>
+     <site>
+      <id>localDropbox</id>
+      <url>${dropbox.site}/</url>
+    </site>
 
 <!-- 
 		<repository>
